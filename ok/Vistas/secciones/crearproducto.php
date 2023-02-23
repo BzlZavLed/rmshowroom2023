@@ -2,15 +2,14 @@
     <div class="br-mainpanel">
       <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-          <a class="breadcrumb-item" href="index.html">Bracket</a>
-          <span class="breadcrumb-item active">Blank Page</span>
+          <a class="breadcrumb-item" href="index.html">Inicio</a>
+          <span class="breadcrumb-item active">Crear producto</span>
         </nav>
       </div><!-- br-pageheader -->
       <div class="br-pagetitle">
         <i class="icon icon ion-ios-book-outline"></i>
         <div>
-          <h4>crear produto</h4>
-          <p class="mg-b-0">Introducing Bracket Plus admin template, the most handsome admin template of all time.</p>
+          <h4>Crear produto</h4>
         </div>
       </div><!-- d-flex -->
 
@@ -21,9 +20,9 @@
 session_start();
 //include("../../db/conexiones/conexion2.php");
 
-$user = $_SESSION["nomEmpresa"];
+$user = $_SESSION["nomDB"];
 
-$conn =  mysqli_connect('127.0.0.1:3306', 'root', 'Lp098xdr', $user);
+$conn =  mysqli_connect('127.0.0.1:3307', 'benjamin', '*Zaab930802agodos93', $user);
 if (!$conn) {
      die('No pudo conectarse: ' . mysqli_error());
 }
@@ -31,7 +30,7 @@ if (!$conn) {
 $nombre = $_SESSION['nombre'];
 $email = $_SESSION['email'];
 $img = $_SESSION['img'];
-$nomEmpresa = $_SESSION["nomEmpresa"];
+$nomEmpresa = $_SESSION["nomDB"];
 $plan = $_SESSION["plan"];
 
 

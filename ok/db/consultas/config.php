@@ -1,7 +1,7 @@
 <?php
  
 //  incluir la conexion
-include("../conexiones/conexion2.php");
+include("../conexiones/conexion.php");
 
 
 //recuperar los datos del formulario
@@ -34,12 +34,13 @@ echo $ID;
 
 
 if (isset($logo) && $logo == "") {
-   $actualizar = "UPDATE usuarios SET color1='$color1', color2='$color2', color3='$color3', nomEmpresa='$nombre', logo='$logoActual', lastUpdate='$fecha' WHERE id = '$ID'";
-   $resultado = mysqli_query($conexion, $actualizar); 
+   $actualizar = "UPDATE usuarios SET color1='$color1', color2='$color2', color3='$color3', nomEmpresa='$nombre', logo='$logoActual', lastUpdate='$fecha' WHERE idusuarios = '$ID'";
+   $resultado = $conn->query($actualizar);
+   //$resultado = mysqli_query($conexion, $actualizar); 
    
    if ($resultado){
       echo "se han actualizado los cambios correctamente";
-      header('Location:../../Vistas/Principal/main2.php');
+      header('Location:../../Vistas/Principal/index.html');
    }else{
       echo "no se han actualizado los datos";
    }
@@ -64,7 +65,7 @@ if (isset($_POST['subir'])) {
         //Se intenta subir al servidor
         if (move_uploaded_file($temp, '../../img/perfil/'.$archivo)) {
             //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-            chmod('images/'.$archivo, 0777);
+            chmod('../../img/perfil/'.$archivo, 0777);
             //Mostramos el mensaje de que se ha subido co éxito
             echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
             //Mostramos la imagen subida
@@ -72,9 +73,9 @@ if (isset($_POST['subir'])) {
 
 //
 
-$actualizar = "UPDATE usuarios SET color1='$color1', color2='$color2', color3='$color3', nomEmpresa='$nombre', logo='$archivo', lastUpdate='$fecha' WHERE id = '$ID'";
-$resultado = mysqli_query($conexion, $actualizar); 
-
+$actualizar = "UPDATE usuarios SET color1='$color1', color2='$color2', color3='$color3', nomEmpresa='$nombre', logo='$archivo', lastUpdate='$fecha' WHERE idusuarios = '$ID'";
+//$resultado = mysqli_query($conexion, $actualizar); 
+$conn->query($actualizar);
 if ($resultado){
    echo "se han actualizado los cambios correctamente";
 }else{
@@ -82,7 +83,7 @@ if ($resultado){
 }
 //
 
-                      header('Location:../config.php');        
+                      header('Location:../../Vistas/Principal/index.html');        
                      }
         else {
            //Si no se ha podido subir la imagen, mostramos un mensaje de error

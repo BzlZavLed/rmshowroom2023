@@ -23,7 +23,7 @@ while( $row = mysqli_fetch_array( $stmt) ) {
 	$passDB = $row["password"];
       if(password_verify($pass,$passDB)){
       	session_start();
-            $_SESSION["id"] = $row["idusuarios"];
+        $_SESSION["id"] = $row["idusuarios"];
       	$_SESSION["email"] = $row["email"];
       	$_SESSION["nombre"] = $row["nombre"];
       	$_SESSION["puesto"] = $row["puesto"];
@@ -32,7 +32,7 @@ while( $row = mysqli_fetch_array( $stmt) ) {
             $_SESSION["priv3"] = $row["priv3"];
             $_SESSION["priv4"] = $row["priv4"];
             $_SESSION["nomEmpresa"] = $row["nomEmpresa"];
-			$_SESSION["nombd"] = $row["nomDB"];
+			$_SESSION["nomDB"] = $row["nomDB"];
 			$_SESSION["color1"] = $row["color1"];
 			$_SESSION["color2"] = $row["color2"];
 			$_SESSION["color3"] = $row["color3"];

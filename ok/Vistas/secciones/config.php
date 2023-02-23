@@ -1,5 +1,5 @@
 <?php
-include("../../db/conexiones/conexion2.php");
+include("../../db/conexiones/conexion.php");
 session_start();
 
 
@@ -8,14 +8,16 @@ session_start();
  $email = $_SESSION['email'];
  $img = $_SESSION['img'];
 
- $sql = "SELECT * FROM usuarios WHERE id = '$ID'";
+ $sql = "SELECT * FROM usuarios WHERE idusuarios = '$ID'";
 
  if ($result = $conn->query($sql)) {
+ 
    if ($row = mysqli_fetch_array($result)) {
+   
      $color1 = $row['color1'];
      $color2 = $row['color2'];
      $color3 = $row['color3'];
-     $nomEmpresa = $row['nomEmpresa'];
+     $nomEmpresa = $row['nomDB'];
      $logo = $row['logo'];
    }
  }
@@ -69,17 +71,12 @@ session_start();
       <label class="sidebar-label pd-x-10 mg-t-20 op-3">Navegacion</label>
       <ul class="br-sideleft-menu">
         <li class="br-menu-item">
-          <a href="index.php" class="br-menu-link">
+          <a href="../Principal/main2.php" class="br-menu-link">
             <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
-            <span class="menu-item-label">Inicio</span>
+            <span class="menu-item-label">Regresar</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
-        <li class="br-menu-item">
-          <a href="#" class="br-menu-link">
-            <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
-            <span class="menu-item-label">Configuracion</span>
-          </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+      
 
       <br>
     </div><!-- br-sideleft -->
