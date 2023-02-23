@@ -10,7 +10,6 @@
         <i class="icon icon ion-ios-book-outline"></i>
         <div>
           <h4>inicio</h4>
-          <p class="mg-b-0">Introducing Bracket Plus admin template, the most handsome admin template of all time.</p>
         </div>
       </div><!-- d-flex -->
 

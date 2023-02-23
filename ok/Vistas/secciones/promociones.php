@@ -2,15 +2,14 @@
     <div class="br-mainpanel">
       <div class="br-pageheader">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-          <a class="breadcrumb-item" href="index.html">Bracket</a>
-          <span class="breadcrumb-item active">Blank Page</span>
+          <a class="breadcrumb-item" href="index.html">Inicio</a>
+          <span class="breadcrumb-item active">Promociones</span>
         </nav>
       </div><!-- br-pageheader -->
       <div class="br-pagetitle">
         <i class="icon icon ion-ios-book-outline"></i>
         <div>
           <h4>promociones</h4>
-          <p class="mg-b-0">Introducing Bracket Plus admin template, the most handsome admin template of all time.</p>
         </div>
       </div><!-- d-flex -->
 

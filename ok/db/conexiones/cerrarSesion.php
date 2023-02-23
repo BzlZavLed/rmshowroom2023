@@ -5,5 +5,5 @@ session_start();
 // Destroying session
 session_destroy();
 
-header("Location: ../../../index.php");
+header("Location: ../../Vistas/Principal/index.html");
 ?>
