@@ -73,8 +73,12 @@ $searchString = " ";
 $replaceString = "";
 $originalString = $nomEmpresa;
 $namedb = str_replace($searchString, $replaceString, $originalString, $count);
-echo $namedb;
-echo "<br>";
+
+$add = substr(md5(time()), 0, 3);
+
+$nameDB_ok= $add.'_'.$namedb;
+echo $nameDB_ok;
+echo "<br>";  
 
 //verificar que el correo no se repita en la base de datos
 
@@ -90,7 +94,7 @@ $miInsert = $miPDO->prepare('INSERT INTO usuarios (email,password,puesto,nombre,
             'puesto' => $puesto,
             'nombre' => $name,
             'nomEmpresa' => $nomEmpresa,
-            'nomDB' => $namedb,
+            'nomDB' => $nameDB_ok,
             'priv1'=> $priv1,
             'priv2'=> $priv2,
             'priv3'=> $priv3,
@@ -140,8 +144,8 @@ $miInsert3 = $miPDO->prepare('INSERT INTO plan (idplan, idUsuario, FechaInicio, 
   
 
 //crear base de datos
-createdb($namedb);
-insertTables($namedb);
+createdb($nameDB_ok);
+insertTables($nameDB_ok);
 
 header("Location:../../ok/");
 ?>

@@ -1,11 +1,5 @@
 <?php 
 $plan = $_GET['plan'];
-
-
-//hacer uuuna consulta para revisar si esta duplicado el usuario y el nombre de la empresa 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +83,8 @@ $plan = $_GET['plan'];
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input type="email" name="email" id="email" class="form-control required" onchange="getVals(this, 'email_field');">
+                                        <div id="respuesta"> </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Telefono</label>
@@ -160,6 +156,32 @@ $plan = $_GET['plan'];
 
                                         </div>
 
+                                        <div class="step">
+
+                                        <div class="card">
+
+                                            <div class="container">
+                                                <div class="row">
+                                                <div class="col-sm">
+                                                    <label>color 1</label>
+                                                   <h3>Metodo de Pago</h3>
+                                                </div>
+                                                <div class="col-sm">
+                                                    Datos para transferencia.
+                                                </div>
+                                                <div class="col-sm">
+                                                    <label>datos de la tarjeta</label>
+                                                </div>
+                                            
+                                                </div>
+                                            </div>
+                                        
+                                            <br />
+
+                                        </div>
+
+                                        </div>
+
 
                                 <div class="submit step" id="end">
                                     <div class="summary">
@@ -227,6 +249,60 @@ $plan = $_GET['plan'];
             <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+        <!-- validacion del email en base de datos -->
+
+        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/popper.min.js"></script>
+<!-- script -->
+<script type="text/javascript">
+$("#email").on("focusout", function() {
+  var email = $("#email").val(); 
+  var validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+  if(validEmail.test(email) ){
+
+    var dataString = 'email=' + email;
+
+      $.ajax({
+          url: 'db/verificarUser.php',
+          type: "GET",
+          data: dataString,
+          dataType: "JSON",
+
+          success: function(datos){
+            console.log(datos);
+                if( datos.success == 0){
+
+                $("#respuesta").html(datos.message);
+
+                $("input#email").attr('disabled',false); 
+                $("#forward").attr('disabled',true); 
+                document.getElementById("email").value = "";
+
+
+                }else{
+
+                $("#respuesta").html(datos.message);
+
+                $("input").attr('disabled',false); 
+                $("#forward").attr('disabled',false); 
+
+                    }
+                  },
+                  error:function(datos){
+                    console.log(datos);
+                  }
+                });
+  }
+  else{
+//		return false;
+Swal.fire('Ingresa un correo valido')
+
+  }
+          });
+          </script>
+
         <!-- alerta -->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="sweetalert2.min.js"></script>
