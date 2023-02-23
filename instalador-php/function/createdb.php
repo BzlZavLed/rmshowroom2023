@@ -1,12 +1,13 @@
 <?php
+        
 
 function createdb($namedb)
 {
     // conexion a la base de datos
-$dbhost = "127.0.0.1:3307";
-$user = "benjamin";
-$password = "*Zaab930802agodos93";
-$conexion = new mysqli($dbhost, $user, $password);
+    include '../db/conexion/datos.php';
+
+
+$conexion = new mysqli($dbhost, $dbUsername, $dbPassword);
 
 if ($conexion->connect_error){
     die("conexion fallida: " .$conexion->connect_error);

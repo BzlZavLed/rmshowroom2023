@@ -1,14 +1,12 @@
 <?php 
     function insertTables($namedb)
     {
-        $dbhost = "127.0.0.1:3307";
-        $user = "benjamin";
-        $password = "*Zaab930802agodos93";
-        
+        include '../db/conexion/datos.php';
         //insertar tablas
         $filePath   = 'rmshowroom.sql';
          // Connect & select the database
-            $db = new mysqli($dbhost, $user, $password, $namedb);
+        
+         $db = new mysqli($dbhost, $dbUsername, $dbPassword, $namedb);
         
             // Temporary variable, used to store current query
             $templine = '';
