@@ -1,8 +1,12 @@
 <?php
- 
-//  incluir la conexion
-include("../conexiones/conexion.php");
+ date_default_timezone_set('America/Monterrey');
 
+//  incluir la conexion
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+session_start();
 
 //recuperar los datos del formulario
  $ID = $_POST['id'];
@@ -42,7 +46,7 @@ if (isset($logo) && $logo == "") {
       echo "se han actualizado los cambios correctamente";
       header('Location:../../Vistas/Principal/index.html');
    }else{
-      echo "no se han actualizado los datos";
+      echo "no se han actualizado los dato de colores";
    }
 }else{
 
@@ -79,7 +83,7 @@ $conn->query($actualizar);
 if ($resultado){
    echo "se han actualizado los cambios correctamente";
 }else{
-   echo "no se han actualizado los datos";
+   echo "no se han actualizado los datos _";
 }
 //
 

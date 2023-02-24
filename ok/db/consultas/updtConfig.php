@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 date_default_timezone_set('America/Monterrey');
 $id = $_POST["id"];
 $nomEmpresa = $_POST["nomEmpresa"];

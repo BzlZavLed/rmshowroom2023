@@ -1,12 +1,15 @@
 <?php
 
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include ($dir.'/db/conn.php');	
 
 
 $query = "SELECT ident,nombre,importe FROM proveedores";
 
-$exec = mysqli_query($conn,$query);
+$exec = mysqli_query($conn3,$query);
 $cad = "";
 while($row = mysqli_fetch_array($exec)){
 	$ident = $row["ident"];

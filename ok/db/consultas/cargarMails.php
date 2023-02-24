@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -14,9 +18,9 @@ $cobrosamarca = "SELECT * FROM mailer WHERE subject = '".$tipo."'";
 
 
 				
-if(!empty(selectMultipleRows($conn, $cobrosamarca))){ 		
+if(!empty(selectMultipleRows($conn3, $cobrosamarca))){ 		
 
-foreach(selectMultipleRows($conn, $cobrosamarca) as $row)
+foreach(selectMultipleRows($conn3, $cobrosamarca) as $row)
     {
         $array[$i]["id"] = $row['id'];
         $array[$i]["email_to"] = $row['email_to'];

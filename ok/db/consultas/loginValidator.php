@@ -1,17 +1,14 @@
 <?php
 
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
 
-include("../conexiones/conexion.php");
+include($dir."/db/conn.php");
 date_default_timezone_set('America/Monterrey');
 
 
 $user = $_POST["user"];
 $pass = $_POST["pass"];
-  
-
-
-
-
 $sql = "SELECT * FROM usuarios WHERE email = '".$user."'";
 
 
@@ -38,6 +35,8 @@ while( $row = mysqli_fetch_array( $stmt) ) {
 			$_SESSION["color3"] = $row["color3"];
 			$_SESSION["img"] = $row['logo'];
 			$_SESSION["plan"] = $row['idPlan'];
+			$idPlan = $row['idPlan'];
+
 			setcookie("database", $row["nomDB"] , time()+84600, "/");
 
 

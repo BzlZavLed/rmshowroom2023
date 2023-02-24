@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -30,9 +34,9 @@ if($user == 1 || $user == 2){
    
 }
 				
-if(!empty(selectMultipleRows($conn, $cajaventas))){ 		
+if(!empty(selectMultipleRows($conn3, $cajaventas))){ 		
 
-foreach(selectMultipleRows($conn, $cajaventas) as $row)
+foreach(selectMultipleRows($conn3, $cajaventas) as $row)
     {
         $array[$i]["id"] = $row['id'];
         $array[$i]["idventa"] = $row['idventa'];

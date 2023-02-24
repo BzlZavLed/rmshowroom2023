@@ -1,13 +1,18 @@
 <?php
-        
-
+    
 function createdb($namedb)
 {
     // conexion a la base de datos
-    include '../db/conexion/datos.php';
+    include ('../../vendor/autoload.php');
+    $dotenv = Dotenv\Dotenv::createImmutable('../../');
+    $dotenv->load();
+    //variables de conexion
+    $usuario  = $_ENV['USERDB'];
+    $password = $_ENV['PASSWORD'];
+    $servidor =$_ENV['HOST'];
+    $basededatos = $_ENV['DATABASE'];
 
-
-$conexion = new mysqli($dbhost, $dbUsername, $dbPassword);
+$conexion = new mysqli($servidor, $usuario, $password);
 
 if ($conexion->connect_error){
     die("conexion fallida: " .$conexion->connect_error);

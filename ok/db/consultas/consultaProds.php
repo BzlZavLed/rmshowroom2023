@@ -1,10 +1,10 @@
 <?php
 session_start();
 
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
 
-
-
-include("../conexiones/conexion2.php");
+include($dir."/db/conn.php");
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 
@@ -28,9 +28,9 @@ $productos = "SELECT e.*,f.nombre as provee FROM `producto` e INNER JOIN proveed
 
 }	
 
-if(!empty(selectMultipleRows($conn, $productos))){ 		
+if(!empty(selectMultipleRows($conn3, $productos))){ 		
 
-foreach(selectMultipleRows($conn, $productos) as $row)
+foreach(selectMultipleRows($conn3, $productos) as $row)
     {
         $array[$i]["ident"] = $row['ident'];
         $array[$i]["nombre"] = $row['nombre'];

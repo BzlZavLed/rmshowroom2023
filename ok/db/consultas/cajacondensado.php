@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -13,24 +17,24 @@ $fecha1 = $_POST["fecha1"];
 $fecha2 = $_POST["fecha2"];
 
 $cajaventas = "SELECT ident,nombre FROM proveedores";
-$exec = mysqli_query($conn,$cajaventas);
+$exec = mysqli_query($conn3,$cajaventas);
 $idx = 0;
 $array = array();
 while($row = mysqli_fetch_array($exec)){
     $id = $row['ident'];
     $nombre = $row['nombre'];
     $ventas = "SELECT IFNULL(SUM(total),0) as ventas FROM ventadesg WHERE idProd != 0 AND fecha BETWEEN '".$fecha1."' AND '".$fecha2."' AND proveedor = ".$id;
-    $ex = mysqli_query($conn,$ventas);
+    $ex = mysqli_query($conn3,$ventas);
     $vnt = mysqli_fetch_array($ex);
     $vent = $vnt['ventas'];
 
     $pagos = "SELECT IFNULL(SUM(total),0) as pagos FROM ventadesg WHERE idProd = 0 AND fecha BETWEEN '".$fecha1."' AND '".$fecha2."' AND proveedor = ".$id;
-    $exp = mysqli_query($conn,$pagos);
+    $exp = mysqli_query($conn3,$pagos);
     $pgs = mysqli_fetch_array($exp);
     $pag = $pgs['pagos'];
 
     $descu = "SELECT IFNULL(SUM(((pUni*cant)*totdesc)/100),0) as descuentos FROM ventadesg WHERE fecha BETWEEN '".$fecha1."' AND '".$fecha2."' AND proveedor = ".$id;
-    $esd = mysqli_query($conn,$descu);
+    $esd = mysqli_query($conn3,$descu);
     $desc = mysqli_fetch_array($esd);
     $descuentos = $desc['descuentos'];
 

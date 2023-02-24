@@ -1,4 +1,5 @@
 <?php
+include '../conexion/datos.php';
 function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath){
     // Connect & select the database
     $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
@@ -34,15 +35,5 @@ function restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $file
     }
     return !empty($error)?$error:true;
 }
-
-
-
-
-$dbHost     = '127.0.0.1:3307';
-$dbUsername = 'benjamin';
-$dbPassword = '*Zaab930802agodos93';
-$dbName     = 'admin';
-$filePath   = 'rmshowroom.sql';
-
 restoreDatabaseTables($dbHost, $dbUsername, $dbPassword, $dbName, $filePath);
 ?>

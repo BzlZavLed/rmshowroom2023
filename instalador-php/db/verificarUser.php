@@ -1,5 +1,5 @@
 <?php 
- include('conexion/config.php');
+ include('../../db/config.php');
  $email    = $_REQUEST['email'];
 
 

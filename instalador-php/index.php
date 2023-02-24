@@ -255,7 +255,7 @@ $plan = $_GET['plan'];
 <script src="js/bootstrap.min.js"></script>
 <script src="js/popper.min.js"></script>
 <!-- script -->
-
+ 
 <script type="text/javascript">
 $("#email").on("focusout", function() {
   var email = $("#email").val(); 

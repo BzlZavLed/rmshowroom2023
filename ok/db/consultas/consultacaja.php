@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -16,9 +20,9 @@ $cajaconsulta = "SELECT * FROM estadocaja WHERE fecha ='".$fec1."'";
 
 
 				
-if(!empty(selectMultipleRows($conn, $cajaconsulta))){ 		
+if(!empty(selectMultipleRows($conn3, $cajaconsulta))){ 		
 
-foreach(selectMultipleRows($conn, $cajaconsulta) as $row)
+foreach(selectMultipleRows($conn3, $cajaconsulta) as $row)
     {
         $array[$i]["fecha"] = $row['fecha'];
         $array[$i]["estado"] = $row['estado'];

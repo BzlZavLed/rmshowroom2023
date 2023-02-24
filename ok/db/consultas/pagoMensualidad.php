@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 date_default_timezone_set('America/Monterrey');
 $monto = $_POST["monto"];
 $prov = $_POST["prov"];
@@ -19,10 +23,10 @@ if($monto > $cantidad){
 	$query = "UPDATE mensualidad SET pagado = 3 ,cantidad = ".$cantidad.", fechaPago = '".date("Y-m-d")."' WHERE mes_cobro = '".$mes."' AND marca = '".$prov."'";
 }
 
-$exec = mysqli_query($conn,$query);
+$exec = mysqli_query($conn3,$query);
 
 $registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Pago de mensualidad ".$prodid."','".$user."','".date("Y-m-d")."')";
-$exec2 = mysqli_query($conn,$registro);
+$exec2 = mysqli_query($conn3,$registro);
 
 
 
@@ -30,11 +34,11 @@ if($exec){
 	echo "Pago registrado";
 }else{
 	//echo $query;
-	echo "Error ".mysqli_error($conn).$query;
+	echo "Error ".mysqli_error($conn3).$query;
 }
 
 
-mysqli_close($conn);
+mysqli_close($conn3);
 
 
 

@@ -9,9 +9,9 @@ $i = 0;
 $proveedores = "SELECT * FROM proveedores";
 
 				
-if(!empty(selectMultipleRows($conn, $proveedores))){ 		
+if(!empty(selectMultipleRows($conn3, $proveedores))){ 		
 
-foreach(selectMultipleRows($conn, $proveedores) as $row)
+foreach(selectMultipleRows($conn3, $proveedores) as $row)
     {
         $array[$i]["ident"] = $row['ident'];
         $array[$i]["nombre"] = $row['nombre'];

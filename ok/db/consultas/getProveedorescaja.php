@@ -1,14 +1,18 @@
 <?php
 
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 $key = $_POST['key'];
 $validator = $_POST['validator'];
 $html = '';
 $query = "";
 
 $query = 'SELECT ident,nombre FROM proveedores WHERE nombre LIKE "%'.strip_tags($key).'%"';
-$result = $conn->query($query);
+$result = $conn3->query($query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {                
         $html .= '<div><a class="suggest-element" data="'.$row['nombre'].'" id="'.$row['ident'].'">'.$row['nombre'].'|'.$row['ident'].'</a></div>';

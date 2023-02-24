@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 date_default_timezone_set('America/Monterrey');
 $ident = $_POST["ident"];
 $nombre = $_POST["nombre"];
@@ -13,18 +17,25 @@ $user = $_SESSION["nombre"];
 $sucursal = $_POST["sucursal"];
 $mensualidad = $_POST["mensualidad"];
 $query = "INSERT INTO proveedores (ident,nombre,fecha,tel,email,bancaria,ciudad,importe,sucursal)VALUES ('".$ident."','".$nombre."','".$fecha."','".$tel."','".$email."','".$bancaria."','".$ciudad."',".$mensualidad.",'".$sucursal."')";
-$exec = mysqli_query($conn,$query);
-$registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Creación de proveedor".$nombre."','".$user."','".date("Y-m-d")."')";
-$exec2 = mysqli_query($conn,$registro);
+$exec = mysqli_query($conn3,$query);
+
+
+
+
 if($exec){
+	$registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Creación de proveedor".$nombre."','".$user."','".date("Y-m-d")."')";
+$exec2 = mysqli_query($conn3,$registro);
 	echo "Proveedor creado";
+
 }else{
+
 	echo $query;
-	echo "Error".mysqli_error($conn);
+	echo "Error".mysqli_error($conn3);
+	$registro = "INSERT INTO registro (accion,user,fecha) VALUES ('fallo la Creación de proveedor".$nombre."','".$user."','".date("Y-m-d")."')";
+$exec2 = mysqli_query($conn3,$registro);
 }
 
-
-mysqli_close($conn);
+mysqli_close($conn3);
 
 
 

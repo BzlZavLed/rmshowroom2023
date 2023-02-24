@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 
@@ -46,8 +50,8 @@ if($user == 1 || $user == 2){
 }
  
 
-$ingexec = mysqli_query($conn,$ingreso);
-$egrexec = mysqli_query($conn,$egreso);
+$ingexec = mysqli_query($conn3,$ingreso);
+$egrexec = mysqli_query($conn3,$egreso);
 
 $rowing = mysqli_fetch_array($ingexec);
 $rowegr = mysqli_fetch_array($egrexec);

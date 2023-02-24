@@ -1,9 +1,13 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
-$data = array();
+$data = array(); 
 $i = 0;
 $ingresos = "";
 $fec1 = $_POST["fecha1"];
@@ -29,9 +33,9 @@ $ingresos = "SELECT e.*,f.nombre FROM `entradas` e inner join proveedores f on e
 
 
 
-if(!empty(selectMultipleRows($conn, $ingresos))){ 		
+if(!empty(selectMultipleRows($conn3, $ingresos))){ 		
 
-foreach(selectMultipleRows($conn, $ingresos) as $row)
+foreach(selectMultipleRows($conn3, $ingresos) as $row)
     {
         $array[$i]["id"] = $row['id'];
         $array[$i]["prodnombre"] = $row['prodnombre'];
@@ -67,7 +71,7 @@ foreach(selectMultipleRows($conn, $ingresos) as $row)
              );
             
        }
-    }
+    } 
     else // Nothing found in database
     { 
         $json[] = array

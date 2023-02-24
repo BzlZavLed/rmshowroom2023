@@ -1,6 +1,6 @@
 <?
-$user = $_COOKIE['usuario'];
-Export_Database('localhost','rmWeb','rmpass*20200285',$user);
+$user = $_COOKIE['database'];
+Export_Database('127.0.0.1:3306','root','Lp0098xdr',$user);
 
 function Export_Database($host,$user,$pass,$name,$tables=false,$backup_name=false){
   $mysqli = new mysqli($host,$user,$pass,$name);

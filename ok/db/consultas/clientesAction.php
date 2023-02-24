@@ -1,10 +1,14 @@
 <?php
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 include("tools.php");
 
-
+ 
 $action = (isset($_POST['action'])) ? $_POST['action'] : 'update';
-
+ 
 if($action == 'delete'){
    $query = "
     DELETE FROM clientes 
@@ -18,4 +22,4 @@ if($action == 'delete'){
 }
 
 
-$conn->query($query);
+$conn3->query($query);
