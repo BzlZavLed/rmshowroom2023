@@ -43,7 +43,7 @@ if ($result = $conn->query($sql)) {
  }
 }
 //CONSULTA PARA SABER EL PLAN SUSCRITO
- $sql2 = "SELECT * FROM plan where idplan = $plan";
+ /* $sql2 = "SELECT * FROM plan where idplan = $plan";
 
  if ($result2 = $conn->query($sql2)) {
    if ($row2 = mysqli_fetch_array($result2)) {
@@ -56,7 +56,7 @@ if ($result = $conn->query($sql)) {
 $prodFaltante = $numProuctos - $resultado;
  }else{
   $prodFaltante = 'numero de productos exedido';
- }
+ } */
 
  ?>
  <?PHP if($prodFaltante == 0)

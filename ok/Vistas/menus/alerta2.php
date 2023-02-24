@@ -11,7 +11,7 @@ $nomEmpresa = $_SESSION["nomEmpresa"];
       <ul class="br-sideleft-menu">
         <li class="br-menu-item">
           <a class="br-menu-link" data-toggle="modal" data-target="#cajaModal">
-            <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
+            <i class="fa-solid fa-building-columns"></i>
             <span class="menu-item-label">Abrir caja primero</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->

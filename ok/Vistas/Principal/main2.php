@@ -42,7 +42,7 @@ $color3 = $_SESSION["color3"];
   </title>
 
   <!-- vendor css -->
-  <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/5cc1067d3d.css" crossorigin="anonymous">
   <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
 
   <!-- Bracket CSS -->
@@ -74,8 +74,9 @@ $color3 = $_SESSION["color3"];
       width: 15px;
       height: 25px;
     }
+
     .br-mainpanel {
-    margin-left: 0px;
+      margin-left: 0px;
     }
 
     .next {
@@ -98,6 +99,7 @@ $color3 = $_SESSION["color3"];
 
     }
 
+    /* clases de estilo de vista general */
     .backgroudMainPanel {
       background-color:
         <?php echo $color1 ?>
@@ -116,14 +118,18 @@ $color3 = $_SESSION["color3"];
       border: 0 none;
       transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease
     }
+
     .main-panel {
-    position: relative;
-    float: right;
-    width: calc(100% - 260px);
-    background-color: <?php echo $color1 ?>;
-    transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-}
-.btn {
+      position: relative;
+      float: right;
+      width: calc(100% - 260px);
+      background-color:
+        <?php echo $color1 ?>
+      ;
+      transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    }
+
+    .btn {
       border-width: 2px;
       font-weight: 600;
       font-size: 0.8571em;
@@ -134,10 +140,13 @@ $color3 = $_SESSION["color3"];
       border-radius: 3px;
       padding: 11px 22px;
       cursor: pointer;
-      background-color:  <?php echo $color3 ?>;
+      background-color:
+        <?php echo $color3 ?>
+      ;
       color: #FFFFFF;
       transition: all 150ms linear;
     }
+
     .btn-danger {
       border-width: 2px;
       font-weight: 600;
@@ -153,10 +162,8 @@ $color3 = $_SESSION["color3"];
       color: #FFFFFF;
       transition: all 150ms linear;
     }
-    .btn:hover {
-      background-color:#FEDC62;
-      transition: 0.7s;
-  }
+
+    
   </style>
 </head>
 
@@ -184,8 +191,7 @@ $color3 = $_SESSION["color3"];
     <div class="row">
       <div class="col-md-12">
         <div class="backgroundMainCard" id="mainview">
-
-          <div id="maincontroller" class="backgroundMainCard">
+          <div id="maincontroller">
             <div class="img-container" style="text-align: center;">
               <!-- Block parent element -->
               <img src="../../img/perfil/<?php echo $img; ?>" alt="Logo Rosa Mexicano" width="400px" ;>
@@ -304,7 +310,8 @@ $color3 = $_SESSION["color3"];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
     integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+  
+    <script src="https://kit.fontawesome.com/5cc1067d3d.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
