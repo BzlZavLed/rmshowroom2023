@@ -1,9 +1,7 @@
 <?php
 session_start();
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
+include("../../../db/conn2.php");
 
-include($dir."/db/conn.php");
 
 $message = '';
 $employee_file = $_POST['employee_file'];

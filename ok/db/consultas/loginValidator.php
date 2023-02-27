@@ -1,9 +1,9 @@
 <?php
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
 
-include($dir."/db/conn.php");
+
+include("../../../db/conn2.php");
+
 date_default_timezone_set('America/Monterrey');
 
 
@@ -36,7 +36,6 @@ while( $row = mysqli_fetch_array( $stmt) ) {
 			$_SESSION["img"] = $row['logo'];
 			$_SESSION["plan"] = $row['idPlan'];
 			$idPlan = $row['idPlan'];
-
 			setcookie("database", $row["nomDB"] , time()+84600, "/");
 
 

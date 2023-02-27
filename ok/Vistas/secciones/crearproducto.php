@@ -33,11 +33,10 @@ $img = $_SESSION['img'];
 $nomEmpresa = $_SESSION["nomDB"];
 $plan = $_SESSION["plan"];
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
 
-include($dir."/db/conn.php");
-//include($dir."/db/conexion2.php");
+include("../../../db/conn2.php");
+
+
 //CONSULTA PARA SABER EL TOTAL DE PRODUCTOS
 $sql = "SELECT * FROM producto";
 
@@ -46,6 +45,9 @@ if ($result = $conn3->query($sql)) {
    $resultado=mysqli_num_rows($result);
  }
 }
+
+include("../../../db/conn.php");
+
 
 //DEFINIR VARIABLES $NombrePlan Y $numProuctos
 

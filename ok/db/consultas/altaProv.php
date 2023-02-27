@@ -1,9 +1,6 @@
 <?php
 session_start();
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
-
-include($dir."/db/conn.php");
+include("../../../db/conn2.php");
 
 date_default_timezone_set('America/Monterrey');
 $ident = $_POST["ident"];

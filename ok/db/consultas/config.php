@@ -2,10 +2,8 @@
  date_default_timezone_set('America/Monterrey');
 
 //  incluir la conexion
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
+include("../../../db/conn2.php");
 
-include($dir."/db/conn.php");
 session_start();
 
 //recuperar los datos del formulario

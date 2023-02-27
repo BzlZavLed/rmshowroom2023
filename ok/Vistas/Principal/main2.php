@@ -2,10 +2,7 @@
 session_start();
 date_default_timezone_set('America/Monterrey');
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
-
-include($dir."/db/conexion2.php");
+include("../../../db/conn2.php");
 if (!isset($_SESSION["nombre"])) {
   header("Location: index.html");
   exit();

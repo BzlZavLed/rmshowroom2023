@@ -1,9 +1,7 @@
 <?php
 session_start();
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
+include("../../../db/conn2.php");
 
-include($dir."/db/conn.php");
 
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
@@ -53,7 +51,9 @@ foreach(selectMultipleRows($conn3, $ingresos) as $row)
 }
     if(!(empty($array))) // If something was fetched
     {
-        while(list($key, $value) = each($array))
+       // while(list($key, $value) = each($array))
+        foreach($array as $key=>$value)
+
         {
              $json[] = array
              (

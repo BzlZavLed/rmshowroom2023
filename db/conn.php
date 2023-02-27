@@ -1,4 +1,5 @@
 <?php 
+ $dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
 
 include ($dir.'/vendor/autoload.php');
 
@@ -10,24 +11,20 @@ $password = $_ENV['PASSWORD'];
 $servidor =$_ENV['HOST'];
 $basededatos = $_ENV['DATABASE'];
 
-$user = $_COOKIE['database'];
+
+
     
 
 $conn = mysqli_connect($servidor, $usuario, $password, $basededatos);
 
-$conn2 = mysqli_connect($servidor, $usuario, $password, $user);
+$conn3 = mysqli_connect($servidor, $usuario, $password, $basededatos);
 
 
-$hostPDO = "mysql:host=$servidor;dbname=$basededatos;";
-$miPDO = new PDO($hostPDO, $usuario, $password);
 
-if(!$conn || !$conn2 || !$miPDO){
+if(!$conn){
     echo "Connection failed!";
 }
 
-$conn3 =  mysqli_connect($servidor, $usuario, $password,$user);
-if (!$conn3) {
-     die('No pudo conectarse: ' . mysqli_error());
-}
+
 
 ?>

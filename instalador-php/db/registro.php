@@ -1,6 +1,9 @@
-<?php
+<?php 
 //incluir la conexion de base de datos
-include '../../db/conexion.php';
+
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+include($dir."/db/conn2.php");
+
 include '../function/createdb.php';
 include '../function/insertTables.php';
 
@@ -95,7 +98,7 @@ echo "<br>";
 
 //verificar que el correo no se repita en la base de datos
 
-
+ 
 
 //insertar en la base de datos
 $miInsert = $miPDO->prepare('INSERT INTO usuarios (email,password,puesto,nombre,nomEmpresa,nomDB,priv1,priv2,priv3,priv4,color1,color2,color3,logo,idplan,fechaCreacion) VALUES (:email, :clave, :puesto, :nombre, :nomEmpresa, :nomDB, :priv1, :priv2, :priv3, :priv4, :color1, :color2, :color3, :logo, :plan, :fecha)');
