@@ -72,7 +72,7 @@ $sql2 = "SELECT * FROM nomPlan where idPlan = $plan";
 $prodFaltante = $numProuctos - $resultado;
  }else{
   $prodFaltante = 'numero de productos exedido';
- } */
+ } 
 
  ?>
  <?PHP if($prodFaltante == 0)
