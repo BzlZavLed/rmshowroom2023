@@ -5,7 +5,7 @@ include ($dir.'/vendor/autoload.php');
 
 $dotenv = Dotenv\Dotenv::createImmutable($dir.'/');
 $dotenv->load();
-
+ 
 $usuario  = $_ENV['USERDB'];
 $password = $_ENV['PASSWORD'];
 $servidor =$_ENV['HOST'];

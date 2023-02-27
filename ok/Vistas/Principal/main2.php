@@ -210,7 +210,7 @@ $color3 = $_SESSION["color3"];
         </span><br>
         <label> Puesto</label>
         <span id="puesto">
-          <?php echo $_SESSION["puesto"] ?>
+          <?php echo $_SESSION["plan"] ?>
         </span><br>
         <label>Privilegio 1</label>
         <span id="priv1">

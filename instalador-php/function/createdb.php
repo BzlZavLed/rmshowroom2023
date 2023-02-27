@@ -2,15 +2,9 @@
     
 function createdb($namedb)
 {
-    // conexion a la base de datos
-    include ('../../vendor/autoload.php');
-    $dotenv = Dotenv\Dotenv::createImmutable('../../');
-    $dotenv->load();
-    //variables de conexion
-    $usuario  = $_ENV['USERDB'];
-    $password = $_ENV['PASSWORD'];
-    $servidor =$_ENV['HOST'];
-    $basededatos = $_ENV['DATABASE'];
+    include('../../db/conn.php');
+
+
 
 $conexion = new mysqli($servidor, $usuario, $password);
 
