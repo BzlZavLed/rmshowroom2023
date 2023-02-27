@@ -1,8 +1,7 @@
 <?php 
 //incluir la conexion de base de datos
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-include($dir."/db/conn2.php");
+include("../../db/conn2.php");
 
 include '../function/createdb.php';
 include '../function/insertTables.php';

@@ -1,10 +1,6 @@
 <?php
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-define("dir",  $dir);
-
-include($dir."/db/conn.php");
-
+include("../../../db/conn.php");
 
 session_start();
 
@@ -23,7 +19,7 @@ session_start();
      $color1 = $row['color1'];
      $color2 = $row['color2'];
      $color3 = $row['color3'];
-     $nomEmpresa = $row['nomDB'];
+     $nomEmpresa = $row['nomEmpresa'];
      $logo = $row['logo'];
    }
  }
