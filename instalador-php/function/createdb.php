@@ -2,10 +2,9 @@
     
 function createdb($namedb)
 {
-    $dir2 = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
     // conexion a la base de datos
-    include ($dir2.'/vendor/autoload.php');
-    $dotenv = Dotenv\Dotenv::createImmutable($dir2.'/');
+    include ('../../vendor/autoload.php');
+    $dotenv = Dotenv\Dotenv::createImmutable('../../');
     $dotenv->load();
     //variables de conexion
     $usuario  = $_ENV['USERDB'];

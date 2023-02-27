@@ -1,11 +1,9 @@
 <?php 
     function insertTables($namedb)
     {
-        $dir3 = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
-
       // conexion a la base de datos
-      include ($dir3.'/vendor/autoload.php');
-      $dotenv = Dotenv\Dotenv::createImmutable($dir3.'/');
+      include ('../../vendor/autoload.php');
+      $dotenv = Dotenv\Dotenv::createImmutable('../../');
       $dotenv->load();
     //variables de conexion
     $usuario  = $_ENV['USERDB'];

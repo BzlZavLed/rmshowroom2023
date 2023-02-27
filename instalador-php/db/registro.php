@@ -1,7 +1,7 @@
 <?php 
 //incluir la conexion de base de datos
 
-include("../../db/conn2.php");
+include("../../db/conn.php");
 
 include '../function/createdb.php';
 include '../function/insertTables.php';

@@ -11,8 +11,7 @@ $password = $_ENV['PASSWORD'];
 $servidor =$_ENV['HOST'];
 $basededatos = $_ENV['DATABASE'];
 
-$hostPDO = "mysql:host=$servidor;dbname=$basededatos;";
-$miPDO = new PDO($hostPDO, $usuario, $password);
+
 
 
 $user = $_COOKIE['database'];
