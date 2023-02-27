@@ -1,5 +1,5 @@
 <?php 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+$dir = $_SERVER['DOCUMENT_ROOT'].'/rmshowroom2023';
 
 include ($dir.'/vendor/autoload.php');
 
@@ -14,10 +14,13 @@ $basededatos = $_ENV['DATABASE'];
 $hostPDO = "mysql:host=$servidor;dbname=$basededatos;";
 $miPDO = new PDO($hostPDO, $usuario, $password);
 
-
 $user = $_COOKIE['database'];
 
-$conn2 = mysqli_connect($servidor, $usuario, $password, $user);
-$conn3 = mysqli_connect($servidor, $usuario, $password, $user);
+$conn = mysqli_connect($servidor, $usuario, $password, $user);
 
- ?>
+function connectCustom($db){
+    $conn = mysqli_connect($_ENV['HOST'], $_ENV['USERDB'], $_ENV['PASSWORD'], $db);
+    return $conn; 
+}
+
+?>

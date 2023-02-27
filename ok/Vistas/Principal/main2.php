@@ -12,10 +12,12 @@ $email = $_SESSION['email'];
 $img = $_SESSION['img'];
 $user = $_COOKIE["database"];
 
+
 $color1 = $_SESSION["color1"];
 $color2 = $_SESSION["color2"];
 $color3 = $_SESSION["color3"];
 
+$conn = connectCustom($user);
 
 ?>
 <!DOCTYPE html>
@@ -170,7 +172,7 @@ $color3 = $_SESSION["color3"];
 <body class="backgroudMainPanel">
   <?php
   $query = "SELECT estado FROM estadocaja WHERE fecha = '" . date("Y-m-d") . "'";
-  $exec = mysqli_query($conn2, $query);
+  $exec = mysqli_query($conn, $query);
   $row = mysqli_fetch_array($exec);
 
   if (isset($row['estado'])) {

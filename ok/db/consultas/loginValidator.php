@@ -11,10 +11,13 @@ $user = $_POST["user"];
 $pass = $_POST["pass"];
 $sql = "SELECT * FROM usuarios WHERE email = '".$user."'";
 
-
+//echo $sql;
 $stmt = mysqli_query( $conn, $sql);
 if( $stmt === false ) {
    echo json_encode(array('return' => 2));   
+}
+if (mysqli_num_rows($stmt)==0) { 
+	echo json_encode(array('return' => 3)); 
 }
 while( $row = mysqli_fetch_array( $stmt) ) {
 	$passDB = $row["password"];

@@ -48,6 +48,7 @@ $(document).on('click', '#mainLogin', function () {
             $.ajax({
                 url: "../../db/consultas/loginValidator.php",
                 type: "post",
+                dataType: "json",
                 data: { user: user, pass: pass },
                 async: true,
                 beforeSend: function () {

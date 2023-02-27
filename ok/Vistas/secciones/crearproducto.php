@@ -23,7 +23,7 @@ $user = $_SESSION["nomDB"];
 
 
 
-$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+$dir = $_SERVER['DOCUMENT_ROOT'].'/rmshowroom2023';
 define("dir",  $dir);
 
 
