@@ -1,8 +1,8 @@
 <?php
 
+ 
 
-
-include("../../../db/conn2.php");
+include("../../../db/conn.php");
 
 date_default_timezone_set('America/Monterrey');
 

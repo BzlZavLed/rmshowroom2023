@@ -2,6 +2,8 @@
 
 include("../../../db/conn.php");
 
+
+
 session_start();
 
  
@@ -10,7 +12,7 @@ session_start();
  $email = $_SESSION['email'];
  $img = $_SESSION['img'];
 
- $sql = "SELECT * FROM usuarios WHERE idusuarios = '$ID'";
+ $sql = "SELECT * FROM planes WHERE idUsuario = '$ID'";
 
  if ($result = $conn->query($sql)) {
  
@@ -19,8 +21,20 @@ session_start();
      $color1 = $row['color1'];
      $color2 = $row['color2'];
      $color3 = $row['color3'];
-     $nomEmpresa = $row['nomEmpresa'];
+     $nomEmpresa = $row['nomDB'];
      $logo = $row['logo'];
+     $admin = $row['admin'];
+     $crearProucto = $row['crearProucto'];
+     $entradaProducto = $row['entradaProducto'];
+     $proveedores = $row['proveedores'];
+     $reportes = $row['reportes'];
+     $crearProductos = $row['crearProductos'];
+     $crearCobros =  $row['crearCobros'];
+     $Mail = $row['Mail'];
+     $respaldo = $row['respaldo'];
+     $clientes = $row['clientes'];
+     $promociones = $row['promociones'];
+
    }
  }
 ?>
@@ -173,22 +187,20 @@ session_start();
      <!-- inicia form layout -->
      <div class="br-pagebody">
      <div class="br-section-wrapper">
-       <h6 class="br-section-label">Configuracion</h6>
-       <!-- <h6 style="background-color:<?PHP ECHO $color1; ?>;"><?PHP ECHO $color1; ?></h6>
-       <h6 style="background-color:<?PHP ECHO $color2; ?>;"><?PHP ECHO $color2; ?></h6>
-       <h6 style="background-color:<?PHP ECHO $color3; ?>;"><?PHP ECHO $color3; ?></h6>
-       <h6 style="background-color:<?PHP ECHO $color3; ?>;"><?PHP ECHO $nomEmpresa; ?></h6> -->
-
+       <h6 class="br-section-label">Administracion de roles</h6>
+       
        <p class="br-section-text">Elije las opciones de configuracion. </p>
 
        <div class="form-layout form-layout-1">
-        <form action="../../db/consultas/config.php" method="POST" enctype="multipart/form-data"/>
+        <form action="../../db/consultas/admin.php" method="POST" enctype="multipart/form-data"/>
          <div class="row mg-b-25">
            <div class="col-lg-4">
-             <div class="form-group">
-               <label class="form-control-label">color fondo: <span class="tx-danger">*</span></label>
-               <input class="form-control" type="color" name="color1" value="<?PHP ECHO $color1; ?>" placeholder="Enter firstname">
-             </div>
+           <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+  <label class="form-check-label" for="defaultCheck1">
+    Default checkbox
+  </label>
+</div>
            </div><!-- col-4 -->
            <div class="col-lg-4">
              <div class="form-group">

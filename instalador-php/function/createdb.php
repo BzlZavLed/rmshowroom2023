@@ -2,15 +2,9 @@
 
 function createdb($namedb)
 {
-    $dir = $_SERVER['DOCUMENT_ROOT'] . '/rmshowroom2023';
-    include('../../vendor/autoload.php');
-    $dotenv = Dotenv\Dotenv::createImmutable($dir . '/');
-    $dotenv->load();
-    //variables de conexion
-    $usuario = $_ENV['USERDB'];
-    $password = $_ENV['PASSWORD'];
-    $servidor = $_ENV['HOST'];
-    $basededatos = $_ENV['DATABASE'];
+    include('../../db/conn.php');
+
+
 
     $conexion = new mysqli($servidor, $usuario, $password);
 

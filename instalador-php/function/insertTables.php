@@ -1,14 +1,8 @@
-<?php
-function insertTables($namedb)
-{
-    $dir = $_SERVER['DOCUMENT_ROOT'] . '/rmshowroom2023';
-    include('../../vendor/autoload.php');
-    $dotenv = Dotenv\Dotenv::createImmutable($dir . '/');
-    $dotenv->load();
-    //variables de conexion
-    $usuario = $_ENV['USERDB'];
-    $password = $_ENV['PASSWORD'];
-    $servidor = $_ENV['HOST'];
+<?php 
+    function insertTables($namedb)
+    {
+        include('../../db/conn.php');
+
 
 
     //insertar tablas
