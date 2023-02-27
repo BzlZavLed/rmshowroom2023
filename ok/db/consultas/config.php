@@ -2,7 +2,7 @@
  date_default_timezone_set('America/Monterrey');
 
 //  incluir la conexion
-include("../../../db/conn2.php");
+include("../../../db/conn.php");
 
 session_start();
 

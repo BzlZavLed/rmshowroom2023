@@ -1,7 +1,7 @@
 <?php 
  $dir = $_SERVER['DOCUMENT_ROOT'].'/rmshowroom2023';
 
- include ('../../vendor/autoload.php');
+ include ( $dir.'/vendor/autoload.php');
 
 $dotenv = Dotenv\Dotenv::createImmutable($dir.'/');
 $dotenv->load();
