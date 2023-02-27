@@ -18,14 +18,14 @@
 
 <?php
 session_start();
-//include("../../db/conexiones/conexion2.php");
 
 $user = $_SESSION["nomDB"];
 
-$conn =  mysqli_connect('127.0.0.1:3307', 'benjamin', '*Zaab930802agodos93', $user);
-if (!$conn) {
-     die('No pudo conectarse: ' . mysqli_error());
-}
+
+
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
 
 $nombre = $_SESSION['nombre'];
 $email = $_SESSION['email'];
@@ -34,23 +34,39 @@ $nomEmpresa = $_SESSION["nomDB"];
 $plan = $_SESSION["plan"];
 
 
+include("../../../db/conn2.php");
+
+
 //CONSULTA PARA SABER EL TOTAL DE PRODUCTOS
 $sql = "SELECT * FROM producto";
 
-if ($result = $conn->query($sql)) {
+if ($result = $conn3->query($sql)) {
   if ($row = mysqli_fetch_array($result)) {
    $resultado=mysqli_num_rows($result);
  }
 }
-//CONSULTA PARA SABER EL PLAN SUSCRITO
- /* $sql2 = "SELECT * FROM plan where idplan = $plan";
+
+include("../../../db/conn.php");
+
+
+//DEFINIR VARIABLES $NombrePlan Y $numProuctos
+
+$sql2 = "SELECT * FROM nomPlan where idPlan = $plan";
 
  if ($result2 = $conn->query($sql2)) {
    if ($row2 = mysqli_fetch_array($result2)) {
-    $NombrePlan = $row2['nombrePlan'];
     $numProuctos = $row2['productosMax'];
   }
  }
+
+ $sql3 = "SELECT * FROM nomPlan where idPlan = $plan";
+
+ if ($result3 = $conn->query($sql3)) {
+   if ($row3 = mysqli_fetch_array($result3)) {
+    $NombrePlan = $row3['nombrePlan'];
+  }
+ }
+
 
  if ($resultado <= $numProuctos) {
 $prodFaltante = $numProuctos - $resultado;
@@ -120,7 +136,8 @@ $prodFaltante = $numProuctos - $resultado;
 </div>
 <div class="alert alert-<?php echo $class; ?>" role="alert">
 <?php echo $alert; 
-echo $NombrePlan;?>
+echo $NombrePlan;
+echo " ".$numProuctos;?>
 </div>
 <div class="container-fluid">
   <h4>Crear producto</h4>

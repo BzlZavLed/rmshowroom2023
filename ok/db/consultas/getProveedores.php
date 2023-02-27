@@ -1,12 +1,13 @@
 <?php
 
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
 
 
 $query = "SELECT ident,nombre,importe FROM proveedores";
 
-$exec = mysqli_query($conn,$query);
+$exec = mysqli_query($conn3,$query);
 $cad = "";
 while($row = mysqli_fetch_array($exec)){
 	$ident = $row["ident"];

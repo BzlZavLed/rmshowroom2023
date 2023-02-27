@@ -1,5 +1,7 @@
 <?php
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("tools.php");
 
 $query = "
@@ -8,4 +10,4 @@ SET ".$_POST["name"]." = '".$_POST["value"]."'
 WHERE id = '".$_POST["pk"]."'
 "; 
 
-$conn->query($query);
+$conn3->query($query);

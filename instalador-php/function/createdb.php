@@ -1,12 +1,19 @@
 <?php
-
+    
 function createdb($namedb)
 {
+    $dir2 = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
     // conexion a la base de datos
-$dbhost = "127.0.0.1:3307";
-$user = "benjamin";
-$password = "*Zaab930802agodos93";
-$conexion = new mysqli($dbhost, $user, $password);
+    include ($dir2.'/vendor/autoload.php');
+    $dotenv = Dotenv\Dotenv::createImmutable($dir2.'/');
+    $dotenv->load();
+    //variables de conexion
+    $usuario  = $_ENV['USERDB'];
+    $password = $_ENV['PASSWORD'];
+    $servidor =$_ENV['HOST'];
+    $basededatos = $_ENV['DATABASE'];
+
+$conexion = new mysqli($servidor, $usuario, $password);
 
 if ($conexion->connect_error){
     die("conexion fallida: " .$conexion->connect_error);

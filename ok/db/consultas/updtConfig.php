@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 date_default_timezone_set('America/Monterrey');
 $id = $_POST["id"];
 $nomEmpresa = $_POST["nomEmpresa"];

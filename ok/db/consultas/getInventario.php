@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -19,9 +21,9 @@ $provid = $_POST["provid"];
 $inventario = "SELECT * FROM producto";
 
 }				
-if(!empty(selectMultipleRows($conn, $inventario))){ 		
+if(!empty(selectMultipleRows($conn3, $inventario))){ 		
 
-foreach(selectMultipleRows($conn, $inventario) as $row)
+foreach(selectMultipleRows($conn3, $inventario) as $row)
     {
         $array[$i]["ident"] = $row['ident'];
         $array[$i]["existencia"] = $row['existencia'];

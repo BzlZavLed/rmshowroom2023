@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set('America/Monterrey');
 
-include("../../db/conexiones/conexion2.php");
+include("../../../db/conn2.php");
 if (!isset($_SESSION["nombre"])) {
   header("Location: index.html");
   exit();
@@ -170,7 +170,7 @@ $color3 = $_SESSION["color3"];
 <body class="backgroudMainPanel">
   <?php
   $query = "SELECT estado FROM estadocaja WHERE fecha = '" . date("Y-m-d") . "'";
-  $exec = mysqli_query($conn, $query);
+  $exec = mysqli_query($conn2, $query);
   $row = mysqli_fetch_array($exec);
 
   if (isset($row['estado'])) {

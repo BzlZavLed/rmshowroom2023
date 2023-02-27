@@ -1,6 +1,10 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
 date_default_timezone_set('America/Monterrey');
 $ident = $_POST["ident"];
 $nombre = $_POST["nombre"];
@@ -12,7 +16,7 @@ $ciudad = $_POST["ciudad"];
 $mensualidad = $_POST["mensualidad"];
 $sucursal = $_POST["sucursal"];
 $query = "UPDATE proveedores SET nombre = '".$nombre."',fecha = '".$fecha."',tel ='".$tel."',email='".$email."',bancaria='".$bancaria."',ciudad='".$ciudad."', importe =".$mensualidad.", sucursal ='".$sucursal."' WHERE ident = '".$ident."'";
-$exec = mysqli_query($conn,$query);
+$exec = mysqli_query($conn3,$query);
 
 if($exec){
 	echo "Proveedor actualizado";
@@ -22,7 +26,7 @@ if($exec){
 }
 
 
-mysqli_close($conn);
+mysqli_close($conn3);
 
 
 

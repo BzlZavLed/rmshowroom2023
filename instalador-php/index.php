@@ -251,10 +251,11 @@ $plan = $_GET['plan'];
         <!-- /.modal -->
         <!-- validacion del email en base de datos -->
 
-        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/popper.min.js"></script>
 <!-- script -->
+ 
 <script type="text/javascript">
 $("#email").on("focusout", function() {
   var email = $("#email").val(); 
@@ -272,13 +273,12 @@ $("#email").on("focusout", function() {
 
           success: function(datos){
             console.log(datos);
-                if( datos.success == 0){
+                if( datos.success == 1){
 
                 $("#respuesta").html(datos.message);
 
                 $("input#email").attr('disabled',false); 
                 $("#forward").attr('disabled',true); 
-                document.getElementById("email").value = "";
 
 
                 }else{

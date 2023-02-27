@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -16,9 +18,9 @@ $cobrosamarca = "SELECT id,marca,nombre_marca,mes_cobro,fecha,importe,email FROM
 
 
 				
-if(!empty(selectMultipleRows($conn, $cobrosamarca))){ 		
+if(!empty(selectMultipleRows($conn3, $cobrosamarca))){ 		
 
-foreach(selectMultipleRows($conn, $cobrosamarca) as $row)
+foreach(selectMultipleRows($conn3, $cobrosamarca) as $row)
     {
         $array[$i]["id"] = $row['id'];
         $array[$i]["marca"] = $row['marca'];

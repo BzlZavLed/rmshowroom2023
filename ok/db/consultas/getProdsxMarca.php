@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 
@@ -15,9 +17,9 @@ $provid = $_POST["provid"];
 $productos = "SELECT e.ident,e.nombre,e.descripcion,e.precio,f.existencia,e.precio * f.existencia as importe FROM `producto` e INNER JOIN inventario f ON e.ident = f.ident WHERE e.proveedorid = ".$provid;
 
 
-if(!empty(selectMultipleRows($conn, $productos))){ 		
+if(!empty(selectMultipleRows($conn3, $productos))){ 		
 
-foreach(selectMultipleRows($conn, $productos) as $row)
+foreach(selectMultipleRows($conn3, $productos) as $row)
     {
         $array[$i]["ident"] = $row['ident'];
         $array[$i]["nombre"] = $row['nombre'];

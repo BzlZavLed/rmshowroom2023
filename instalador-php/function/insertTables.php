@@ -1,14 +1,23 @@
 <?php 
     function insertTables($namedb)
     {
-        $dbhost = "127.0.0.1:3307";
-        $user = "benjamin";
-        $password = "*Zaab930802agodos93";
-        
-        //insertar tablas
+        $dir3 = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+
+      // conexion a la base de datos
+      include ($dir3.'/vendor/autoload.php');
+      $dotenv = Dotenv\Dotenv::createImmutable($dir3.'/');
+      $dotenv->load();
+    //variables de conexion
+    $usuario  = $_ENV['USERDB'];
+    $password = $_ENV['PASSWORD'];
+    $servidor =$_ENV['HOST'];
+
+
+    //insertar tablas
         $filePath   = 'rmshowroom.sql';
          // Connect & select the database
-            $db = new mysqli($dbhost, $user, $password, $namedb);
+        
+         $db = new mysqli($servidor, $usuario, $password, $namedb);
         
             // Temporary variable, used to store current query
             $templine = '';

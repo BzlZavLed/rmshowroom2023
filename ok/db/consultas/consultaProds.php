@@ -1,10 +1,8 @@
 <?php
 session_start();
 
+include("../../../db/conn2.php");
 
-
-
-include("../conexiones/conexion2.php");
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 
@@ -28,9 +26,9 @@ $productos = "SELECT e.*,f.nombre as provee FROM `producto` e INNER JOIN proveed
 
 }	
 
-if(!empty(selectMultipleRows($conn, $productos))){ 		
+if(!empty(selectMultipleRows($conn3, $productos))){ 		
 
-foreach(selectMultipleRows($conn, $productos) as $row)
+foreach(selectMultipleRows($conn3, $productos) as $row)
     {
         $array[$i]["ident"] = $row['ident'];
         $array[$i]["nombre"] = $row['nombre'];

@@ -1,8 +1,14 @@
 <?php
-include("../../db/conexiones/conexion.php");
+
+$dir = $_SERVER['DOCUMENT_ROOT'].'/carpeta sin título/versiones/rmshowroom2023';
+define("dir",  $dir);
+
+include($dir."/db/conn.php");
+
+
 session_start();
 
-
+ 
  $ID = $_SESSION['id'];
  $nombre = $_SESSION['nombre'];
  $email = $_SESSION['email'];
@@ -171,11 +177,11 @@ session_start();
      <!-- inicia form layout -->
      <div class="br-pagebody">
      <div class="br-section-wrapper">
-       <h6 class="br-section-label">Configuracion <?PHP ECHO $ID; ?></h6>
-       <h6 style="background-color:<?PHP ECHO $color1; ?>;"><?PHP ECHO $color1; ?></h6>
+       <h6 class="br-section-label">Configuracion</h6>
+       <!-- <h6 style="background-color:<?PHP ECHO $color1; ?>;"><?PHP ECHO $color1; ?></h6>
        <h6 style="background-color:<?PHP ECHO $color2; ?>;"><?PHP ECHO $color2; ?></h6>
        <h6 style="background-color:<?PHP ECHO $color3; ?>;"><?PHP ECHO $color3; ?></h6>
-       <h6 style="background-color:<?PHP ECHO $color3; ?>;"><?PHP ECHO $nomEmpresa; ?></h6>
+       <h6 style="background-color:<?PHP ECHO $color3; ?>;"><?PHP ECHO $nomEmpresa; ?></h6> -->
 
        <p class="br-section-text">Elije las opciones de configuracion. </p>
 
@@ -184,19 +190,19 @@ session_start();
          <div class="row mg-b-25">
            <div class="col-lg-4">
              <div class="form-group">
-               <label class="form-control-label">color principal: <span class="tx-danger">*</span></label>
+               <label class="form-control-label">color fondo: <span class="tx-danger">*</span></label>
                <input class="form-control" type="color" name="color1" value="<?PHP ECHO $color1; ?>" placeholder="Enter firstname">
              </div>
            </div><!-- col-4 -->
            <div class="col-lg-4">
              <div class="form-group">
-               <label class="form-control-label">Color Secundario: <span class="tx-danger">*</span></label>
+               <label class="form-control-label">Color de menu: <span class="tx-danger">*</span></label>
                <input class="form-control" type="color" name="color2" value="<?PHP ECHO $color2; ?>" placeholder="Enter lastname">
              </div>
            </div><!-- col-4 -->
            <div class="col-lg-4">
              <div class="form-group">
-               <label class="form-control-label">Color terciario: <span class="tx-danger">*</span></label>
+               <label class="form-control-label">Color de botones: <span class="tx-danger">*</span></label>
                <input class="form-control" type="color" name="color3" value="<?PHP ECHO $color3; ?>" placeholder="Enter email address">
              </div>
            </div><!-- col-4 -->

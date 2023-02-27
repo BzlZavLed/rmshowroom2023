@@ -1,6 +1,7 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
 include("funcionesConsulta.php");
 
 $data = array();
@@ -9,9 +10,9 @@ $i = 0;
 $proveedores = "SELECT * FROM proveedores";
 
 				
-if(!empty(selectMultipleRows($conn, $proveedores))){ 		
+if(!empty(selectMultipleRows($conn3, $proveedores))){ 		
 
-foreach(selectMultipleRows($conn, $proveedores) as $row)
+foreach(selectMultipleRows($conn3, $proveedores) as $row)
     {
         $array[$i]["ident"] = $row['ident'];
         $array[$i]["nombre"] = $row['nombre'];
@@ -27,7 +28,8 @@ foreach(selectMultipleRows($conn, $proveedores) as $row)
 }
     if(!(empty($array))) // If something was fetched
     {
-        while(list($key, $value) = each($array))
+       // while(list($key, $value) = each($array))
+       foreach($array as $key=>$value)
         {
              $json[] = array
              (

@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("tools.php");;
 date_default_timezone_set('America/Monterrey');
 
@@ -12,19 +14,19 @@ $date = date("Y-m-d");
 
 if ($action == "insert") {
     if (isset($data["addall"])) {
-        $productosProveedor = getAllData($conn, "SELECT ident 
+        $productosProveedor = getAllData($conn3, "SELECT ident 
                                                 FROM producto
                                                 WHERE proveedorid = 
                                                     (SELECT proveedorid 
                                                      FROM producto 
                                                      WHERE ident = '" . $data["producto"] . "')");
         foreach ($productosProveedor as $productoprov) {
-            $query = insertPromotion($conn,$productoprov[0], $data);
-            $exec = insertOrUpdate($conn, $query, "Creacion de promocion " . $productoprov[0], $user);
+            $query = insertPromotion($conn3,$productoprov[0], $data);
+            $exec = insertOrUpdate($conn3, $query, "Creacion de promocion " . $productoprov[0], $user);
         }
     } else {
-        $query = insertPromotion($conn,$data['producto'], $data);
-        $exec = insertOrUpdate($conn, $query, "Creacion de promocion " . $data["producto"], $user);
+        $query = insertPromotion($conn3,$data['producto'], $data);
+        $exec = insertOrUpdate($conn3, $query, "Creacion de promocion " . $data["producto"], $user);
     }
 
 
@@ -33,22 +35,22 @@ if ($action == "insert") {
     $resp = array("resp" => $exec);
     if ($exec == "Success") {
         $get = "SELECT * FROM promociones ORDER BY id DESC";
-        $getData = getAllData($conn, $get);
+        $getData = getAllData($conn3, $get);
         $resp = array("resp" => $exec, "data" => $getData);
     }
 } else {
     $get = "SELECT * FROM promociones ORDER BY id DESC";
-    $getData = getAllData($conn, $get);
+    $getData = getAllData($conn3, $get);
     $resp = array("data" => $getData);
 }
 
 
-mysqli_close($conn);
+mysqli_close($conn3);
 
 echo json_encode($resp);
-function insertPromotion($conn,$prodId, $data)
+function insertPromotion($conn3,$prodId, $data)
 {
-    $proveedorid = getData($conn,"SELECT proveedorid,(SELECT nombre FROM proveedores WHERE ident = producto.proveedorid) AS nombreProv,nombre  
+    $proveedorid = getData($conn3,"SELECT proveedorid,(SELECT nombre FROM proveedores WHERE ident = producto.proveedorid) AS nombreProv,nombre  
             FROM producto 
             WHERE ident = '" . $prodId . "'");
     

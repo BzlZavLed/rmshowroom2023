@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("tools.php");
 include("funcionesConsulta.php");
 $column = array("id", "nombre", "email");
@@ -24,7 +26,7 @@ if ($_POST["length"] != -1) {
     $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
 }
 
-$statement = $conn->prepare($query);
+$statement = $conn3->prepare($query);
 $statement->execute();
 $statement->store_result();
 $number_filter_row = $statement->num_rows;
@@ -37,7 +39,7 @@ $number_filter_row = $statement->num_rows;
 
 
     $data = array();
-    $stmt = mysqli_query($conn,$query);
+    $stmt = mysqli_query($conn3,$query);
     if($result = mysqli_fetch_all_alt($stmt))
     {
         foreach($result as $res)
@@ -67,7 +69,7 @@ function count_all_data($connect)
 
 $output = array(
     'draw'   => intval($_POST['draw']),
-    'recordsTotal' => count_all_data($conn),
+    'recordsTotal' => count_all_data($conn3),
     'recordsFiltered' => $number_filter_row,
     'data'   => $data
 );

@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("../conexiones/conexion2.php");
+include("../../../db/conn2.php");
+
+
 include("funcionesConsulta.php");
 date_default_timezone_set('America/Monterrey');
 $data = array();
@@ -23,9 +25,9 @@ if($user == 1 || $user == 2){
    
 }
 				
-if(!empty(selectMultipleRows($conn, $cajaventas))){ 		
+if(!empty(selectMultipleRows($conn3, $cajaventas))){ 		
 
-foreach(selectMultipleRows($conn, $cajaventas) as $row)
+foreach(selectMultipleRows($conn3, $cajaventas) as $row)
     {
         $array[$i]["totalventa"] = $row['totalventa'];
         $array[$i]["provid"] = $row['provid'];
