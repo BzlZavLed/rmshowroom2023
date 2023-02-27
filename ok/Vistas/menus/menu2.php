@@ -3,14 +3,42 @@ $nombre = $_SESSION['nombre'];
 $email = $_SESSION['email'];
 $img = $_SESSION['img'];
 $nomEmpresa = $_SESSION["nomEmpresa"];
+include("../../../db/conn.php");
 ?>
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo" style = " font-size:15px;"><a href="../Principal/main2.php"><span>[</span>
+<div class="br-logo" style=" font-size:15px;"><a href="../Principal/main2.php"><span>[</span>
     <?php echo $nomEmpresa; ?> <span>]</span>
   </a></div>
 <div class="br-sideleft sideleft-scrollbar" style="background-color: <?php echo $color2 ?>">
   <label class="sidebar-label pd-x-10 mg-t-20 op-3">Menu</label>
   <ul class="br-sideleft-menu">
+
+   <!--  <?php
+    //catalogo
+   /*  $sqlmenu = "SELECT * FROM menu";
+    $resultmenu = mysqli_fetch_array(mysqli_query($conn, $sqlmenu));
+
+    $idUsuario = $_SESSION['id'];
+    $sql = "SELECT * FROM planes WHERE idUsuario = '$idUsuario'";
+    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    $count = 0;
+    foreach ($elem as $key => $value) {
+      if ($key == $resultmenu[$count] && $value == 1) {
+        $icono = $resultmenu['icono'];
+        $nombre = $resultmenu['nombre'];
+        $idmenu = $resultmenu['idmenu'];
+        echo '<li class="br-menu-item">
+    <a href="#" class="br-menu-link" id="' . $idmenu . '">
+      <i class="' . $icono . '"></i>
+      <span class="menu-item-label">' . $nombre . '</span>
+    </a><!-- br-menu-link -->
+  </li><!-- br-menu-item -->';
+      }
+    } */
+
+
+    ?> -->
+
     <li class="br-menu-item">
       <a href="#" class="br-menu-link" id="cajarosa">
         <i class="fa-solid fa-building-columns"></i>

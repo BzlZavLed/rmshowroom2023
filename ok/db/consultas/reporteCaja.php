@@ -31,7 +31,6 @@ if($user == 1 || $user == 2){
     }
    
 }
-				
 if(!empty(selectMultipleRows($conn3, $cajaventas))){ 		
 
 foreach(selectMultipleRows($conn3, $cajaventas) as $row)

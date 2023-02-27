@@ -51,7 +51,7 @@ $nomEmpresa = $_SESSION["nomEmpresa"];
           <hr>
           <ul class="list-unstyled user-profile-nav">
             <li><a href="../secciones/config.php"><i class="icon ion-ios-person"></i> Editar perfil</a></li>
-            <li><a href="../../db/conexiones/cerrarSesion.php"><i class="icon ion-power"></i> cerrar sesion</a></li>
+            <li><a href="../../../db/cerrarSesion.php"><i class="icon ion-power"></i> cerrar sesion</a></li>
           </ul>
         </div><!-- dropdown-menu -->
       </div><!-- dropdown -->

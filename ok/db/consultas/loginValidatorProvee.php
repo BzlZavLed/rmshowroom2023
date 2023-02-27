@@ -22,7 +22,7 @@ while( $row = mysqli_fetch_array( $stmt) ) {
 	$passDB = $row["ident"];
       if(password_verify($pass,$row["password"])){
       	session_start();
-		  $_SESSION["id"] = $row["idusuarios"];
+		$_SESSION["id"] = $row["idusuarios"];
       	$_SESSION["email"] = $row["email"];
       	$_SESSION["nombre"] = $row["nombre"];
       	$_SESSION["puesto"] = $row["puesto"];

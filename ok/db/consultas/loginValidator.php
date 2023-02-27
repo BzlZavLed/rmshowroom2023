@@ -1,8 +1,8 @@
 <?php
 
- 
 
-include("../../../db/conn.php");
+
+include("../../../db/conn2.php");
 
 date_default_timezone_set('America/Monterrey');
 
@@ -42,7 +42,7 @@ while( $row = mysqli_fetch_array( $stmt) ) {
 			setcookie("database", $row["nomDB"] , time()+84600, "/");
 
 
-      	$registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Inicio sesión ".$user."','".$user."','".date("Y-m-d h:i:s")."')";
+      	$registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Inicio sesión ".$user."','".$user."','".date("Y-m-d")."')";
             $exec2 = mysqli_query($conn,$registro);
       	header('Content-Type: application/json');
       	echo json_encode(array('return' => 1));
@@ -50,7 +50,7 @@ while( $row = mysqli_fetch_array( $stmt) ) {
 
 
       }else{
-            $registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Fallo inicio de sesión ".$user."','".$user."','".date("Y-m-d h:i:s")."')";
+            $registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Fallo inicio de sesión ".$user."','".$user."','".date("Y-m-d")."')";
             $exec2 = mysqli_query($conn,$registro);
       	header('Content-Type: application/json');
       	echo json_encode(array('return' => 2));

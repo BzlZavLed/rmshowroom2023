@@ -40,7 +40,7 @@ include("../../../db/conn2.php");
 //CONSULTA PARA SABER EL TOTAL DE PRODUCTOS
 $sql = "SELECT * FROM producto";
 
-if ($result = $conn3->query($sql)) {
+if ($result = $conn->query($sql)) {
   if ($row = mysqli_fetch_array($result)) {
    $resultado=mysqli_num_rows($result);
  }
