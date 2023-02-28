@@ -17,7 +17,7 @@ $color1 = $_SESSION["color1"];
 $color2 = $_SESSION["color2"];
 $color3 = $_SESSION["color3"];
 
-$conn = connectCustom($user);
+//$conn = connectCustom($user);
 
 ?>
 <!DOCTYPE html>
