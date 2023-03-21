@@ -1,43 +1,4 @@
-$(document).ready(function () {
-	var puesto = $("#puesto").html();
-	
-	var count = 0;
-	if (puesto == "Proveedor") {
-		console.log(puesto);
-		$("#proveedores").hide();
-		$("#cajarosa").hide();
-		$("#inven").hide();
-		$("#modal1").hide();
-		$("#salidasModalbtn").hide();
-		$("#administrator").hide();
-		$("#marcacobros").show();
-		$("#cajarosa").hide();
-		$("#producto").hide();
-		$("#ingproducto").hide();
-		$("#proveedores").hide();
-		$("#cobrosmarca").hide();
-		$("#historialrecibos").hide();
-		$("#clientes").hide();
-		$("#respaldarData").hide();
-		$("#reportes").show();
 
-	} else if (puesto == "2") {
-		$("#proveedores").hide();
-		$("#inven").hide();
-		$("#administrator").hide();
-		$("#marcacobros").hide();
-
-	} else {
-		$("#proveedores").show();
-		$("#cajarosa").show();
-		$("#inven").show();
-		$("#administrator").show();
-		$("#marcacobros").hide();
-	}
-
-
-
-})
 
 
 

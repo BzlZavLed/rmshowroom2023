@@ -2,7 +2,7 @@
 
 
 
-include("../../../db/conn2.php");
+include("../../../db/conn.php");
 
 date_default_timezone_set('America/Monterrey');
 
@@ -10,16 +10,30 @@ date_default_timezone_set('America/Monterrey');
 $user = $_POST["user"];
 $pass = $_POST["pass"];
 $sql = "SELECT * FROM usuarios WHERE email = '".$user."'";
-
 //echo $sql;
 $stmt = mysqli_query( $conn, $sql);
 if( $stmt === false ) {
    echo json_encode(array('return' => 2));   
 }
+
 if (mysqli_num_rows($stmt)==0) { 
 	echo json_encode(array('return' => 3)); 
 }
+
+// if ($status == 1){
+// 	echo json_encode(array('return' => 5)); 
+// }else {
+// 	echo json_encode(array('return' => 4)); 
+// }
+
 while( $row = mysqli_fetch_array( $stmt) ) {
+	$status = $row['status'];
+	if($status == 0){
+		echo json_encode(array('return' => 6));
+exit;
+	}
+
+
 	$passDB = $row["password"];
       if(password_verify($pass,$passDB)){
       	session_start();
@@ -45,6 +59,7 @@ while( $row = mysqli_fetch_array( $stmt) ) {
       	$registro = "INSERT INTO registro (accion,user,fecha) VALUES ('Inicio sesión ".$user."','".$user."','".date("Y-m-d")."')";
             $exec2 = mysqli_query($conn,$registro);
       	header('Content-Type: application/json');
+		
       	echo json_encode(array('return' => 1));
       	exit;
 

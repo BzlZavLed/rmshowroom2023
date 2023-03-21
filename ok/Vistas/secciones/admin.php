@@ -12,7 +12,7 @@ session_start();
  $email = $_SESSION['email'];
  $img = $_SESSION['img'];
 
- $sql = "SELECT * FROM planes WHERE idUsuario = '$ID'";
+ $sql = "SELECT * FROM usuario WHERE status = '0'";
 
  if ($result = $conn->query($sql)) {
  
@@ -21,7 +21,7 @@ session_start();
      $color1 = $row['color1'];
      $color2 = $row['color2'];
      $color3 = $row['color3'];
-     $nomEmpresa = $row['nomDB'];
+     $nomEmpresa = $row['nomEmpresa'];
      $logo = $row['logo'];
      $admin = $row['admin'];
      $crearProucto = $row['crearProucto'];

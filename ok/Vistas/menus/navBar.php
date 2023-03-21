@@ -3,6 +3,10 @@ $nombre = $_SESSION["nombre"];
 $email = $_SESSION["email"];
 $img = $_SESSION["img"];
 $nomEmpresa = $_SESSION["nomEmpresa"];
+$ID = $_SESSION['id'];
+$plan = $_SESSION["plan"];
+
+
 ?>
 <!-- ########## START: HEAD PANEL ########## -->
 <div class="br-header backgroudMainPanel">
@@ -50,6 +54,7 @@ $nomEmpresa = $_SESSION["nomEmpresa"];
 
           <hr>
           <ul class="list-unstyled user-profile-nav">
+            <li><a href="../secciones/admin.php"><i class="icon ion-ios-person"></i> administrador</a></li>
             <li><a href="../secciones/config.php"><i class="icon ion-ios-person"></i> Editar perfil</a></li>
             <li><a href="../../../db/cerrarSesion.php"><i class="icon ion-power"></i> cerrar sesion</a></li>
           </ul>

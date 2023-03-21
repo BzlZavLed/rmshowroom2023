@@ -23,6 +23,11 @@ $(document).on('click', '#mainLogin', function () {
                     if (resp.return == 1) {
                         location.href = "main2.php"
 
+                    }else if (resp.return == 6) {
+                        $("#alert").html("tu cuenta no esta activada");
+                        setTimeout(function () {
+                            $('#mydiv').html("");
+                        }, 1000); // <-- time in milliseconds
                     } else {
                         count++;
                         if (count <= 5) {
@@ -30,7 +35,8 @@ $(document).on('click', '#mainLogin', function () {
                             setTimeout(function () {
                                 $('#mydiv').html("");
                             }, 1000); // <-- time in milliseconds
-                        } else {
+                        }
+                         else {
                             $("#alert").html("Si olvido sus datos favor comuniquese a Rosa Mexicano");
                             setTimeout(function () {
                                 $('#mydiv').html("");
@@ -62,7 +68,13 @@ $(document).on('click', '#mainLogin', function () {
                     console.log(resp);
                     if (resp.return == 1) {
                         location.href = "main2.php"
-                    } else {
+                    }else if (resp.return == 6) {
+                        $("#alert").html("tu cuenta no esta activada, comunicate con el administrador.");
+                        setTimeout(function () {
+                            $('#mydiv').html("");
+                        }, 1000); // <-- time in milliseconds
+                    }
+                     else {
                         count++;
                         if (count <= 5) {
                             $("#alert").html("Datos equivocados");
