@@ -1,5 +1,12 @@
 
 <?php
+$dir = $_SERVER['DOCUMENT_ROOT'].'/rmshowroom2023';
+
+include ($dir.'/vendor/autoload.php');
+
+$dotenv = Dotenv\Dotenv::createImmutable($dir.'/');
+$dotenv->load();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
@@ -321,8 +328,8 @@ try {
     $mail->Password   = 'Lp098xdr';
     $mail->Port       = 587;
 
-    $mail->setFrom('alisgoes@outlook.com', 'Aldrin');
-    $mail->addAddress('aldrin.gomez@outlook.com', 'usuario');
+    $mail->setFrom($_ENV['EMAILFROM'], 'Rosa Mexicano');
+    $mail->addAddress('benjaminzavala74@gmail.com', 'usuario');
     $mail->isHTML(true);
     $mail->Subject = 'usuario nuevo';
     $mail->Body    = $mensaje;

@@ -22,7 +22,8 @@ include("../../../db/conn.php");
   
 
     
-    $sql = "SELECT * FROM planes WHERE idUsuario = '$idUsuario'";
+    //$sql = "SELECT * FROM planes WHERE idUsuario = '$idUsuario'";
+    $sql = "SELECT * FROM planes WHERE idplanes = '$idplan'";
     $result = mysqli_fetch_array(mysqli_query($conn, $sql));
     $count = 0;
     foreach ($result as $key => $value) {
