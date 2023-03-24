@@ -5,6 +5,7 @@ include("../../db/conn.php");
 
 include '../function/createdb.php';
 include '../function/insertTables.php';
+include '../function/validacionDatos.php';
 
 date_default_timezone_set('America/Monterrey');
 //
@@ -38,6 +39,7 @@ $respaldo = '0';
 $clientes = '0';
 $promociones = '0';
 $admin = '0';
+$status = '0';
 
 
 //encriptar contraseña
@@ -101,7 +103,7 @@ echo "<br>";
 
 
 //insertar en la base de datos
-$miInsert = $miPDO->prepare('INSERT INTO usuarios (email,password,puesto,nombre,nomEmpresa,nomDB,priv1,priv2,priv3,priv4,color1,color2,color3,logo,idplan,fechaCreacion) VALUES (:email, :clave, :puesto, :nombre, :nomEmpresa, :nomDB, :priv1, :priv2, :priv3, :priv4, :color1, :color2, :color3, :logo, :plan, :fecha)');
+$miInsert = $miPDO->prepare('INSERT INTO usuarios (email,password,puesto,nombre,nomEmpresa,nomDB,priv1,priv2,priv3,priv4,color1,color2,color3,logo,idplan,fechaCreacion,status) VALUES (:email, :clave, :puesto, :nombre, :nomEmpresa, :nomDB, :priv1, :priv2, :priv3, :priv4, :color1, :color2, :color3, :logo, :plan, :fecha, :status)');
 // Ejecuta INSERT con los datos
 $miInsert->execute(
     array(
@@ -120,7 +122,8 @@ $miInsert->execute(
         'color3' => $color3,
         'logo' => $img,
         'plan' => $plan,
-        'fecha' => $fecha
+        'fecha' => $fecha,
+        'status' => $status
     )
 );
 $last_id = $miPDO->lastInsertId();
@@ -154,52 +157,52 @@ $accesos = [
         'idPlan' => $plan,
         'idUsuario' => $last_id,
         'admin' => $admin,
-        'crearProducto' => '1',
-        'entradaProducto' => '0',
-        'proveedores' => '0',
-        'reportes' => '0',
-        'crearProductos' => '1',
-        'crearCobros' => '0',
-        'Mail' => '0',
-        'respaldo' => '0',
+        'cajarosa' => '1',
         'clientes' => '0',
+        'cobrosmarca' => '0',
+        'historialrecibos' => '1',
+        'ingproducto' => '0',
+        'marcacobros' => '0',
+        'producto' => '1',
         'promociones' => '0',
+        'proveedores' => '0',
+        'respaldarData' => '0',
         'fechaInicio' => $fecha,
         'fechaCorte' => $fechacorte,
-        'pago' => '100'
+        'pago' => '300'
     ],
     2 => [
         'idPlan' => $plan,
         'idUsuario' => $last_id,
         'admin' => $admin,
-        'crearProducto' => '1',
-        'entradaProducto' => '1',
-        'proveedores' => '1',
-        'reportes' => '0',
-        'crearProductos' => '1',
-        'crearCobros' => '0',
-        'Mail' => '0',
-        'respaldo' => '0',
-        'clientes' => '0',
-        'promociones' => '0',
+        'cajarosa' => '1',
+        'clientes' => '1',
+        'cobrosmarca' => '1',
+        'historialrecibos' => '1',
+        'ingproducto' => '0',
+        'marcacobros' => '1',
+        'producto' => '1',
+        'promociones' => '1',
+        'proveedores' => '0',
+        'respaldarData' => '0',
         'fechaInicio' => $fecha,
         'fechaCorte' => $fechacorte,
-        'pago' => '200'
+        'pago' => '300'
     ],
     3 => [
         'idPlan' => $plan,
         'idUsuario' => $last_id,
         'admin' => $admin,
-        'crearProducto' => '1',
-        'entradaProducto' => '1',
-        'proveedores' => '1',
-        'reportes' => '1',
-        'crearProductos' => '1',
-        'crearCobros' => '1',
-        'Mail' => '1',
-        'respaldo' => '1',
+        'cajarosa' => '1',
         'clientes' => '1',
+        'cobrosmarca' => '1',
+        'historialrecibos' => '1',
+        'ingproducto' => '1',
+        'marcacobros' => '1',
+        'producto' => '1',
         'promociones' => '1',
+        'proveedores' => '1',
+        'respaldarData' => '1',
         'fechaInicio' => $fecha,
         'fechaCorte' => $fechacorte,
         'pago' => '300'
@@ -210,8 +213,8 @@ $accesos = [
 
 
 
-$miInsert3 = $miPDO->prepare('INSERT INTO planes (idplanes, idUsuario, admin, crearProducto, entradaProducto, proveedores, reportes, crearProductos, crearCobros, Mail, respaldo, clientes, promociones, fechaInicio, fechaCorte, pago) 
-VALUES (:idPlan, :idUsuario, :admin, :crearProducto, :entradaProducto, :proveedores, :reportes, :crearProductos, :crearCobros, :Mail, :respaldo, :clientes, :promociones,  :fechaInicio, :fechaCorte, :pago)');
+$miInsert3 = $miPDO->prepare('INSERT INTO planes (idplanes, idUsuario, admin, cajarosa, clientes, cobrosmarca, historialrecibos, ingproducto, marcacobros, producto, promociones, proveedores, respaldarData, fechaInicio, fechaCorte, pago) 
+                                          VALUES (:idPlan, :idUsuario, :admin, :cajarosa, :clientes, :cobrosmarca, :historialrecibos, :ingproducto, :marcacobros, :producto, :promociones, :proveedores, :respaldarData,  :fechaInicio, :fechaCorte, :pago)');
 // Ejecuta INSERT con los datos
 $miInsert3->execute(
     $accesos[$plan]
@@ -221,6 +224,6 @@ $miInsert3->execute(
 //crear base de datos
 createdb($nameDB_ok);
 insertTables($nameDB_ok);
-
+validacionDatos($last_id);
 header("Location:../../ok/");
 ?>

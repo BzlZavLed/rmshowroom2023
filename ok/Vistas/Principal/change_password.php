@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,7 +31,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Rosa Mexicano | | Login</title>
+    <title>Recuperar Contraseña</title>
 
     <!-- vendor css -->
     <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -36,36 +39,10 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../../css/bracket.css">
-<link rel="stylesheet" href="../../../js/sweetalert2/sweetalert2.min.css">
-
-
-<script>
-const urlSearchParams = new URLSearchParams(window.location.search);
-const message = urlSearchParams.get("message");
-//console.log("El id es:", id);
-switch (message) {
-  case 'ok':
-    console.log('correo enviado');
-    break;
-  case 'error':
-    console.log('surgio un error');
-    // Expected output: "Mangoes and papayas are $2.79 a pound."
-    break;
-    case 'not_found':
-    console.log('no funciono');
-    // Expected output: "Mangoes and papayas are $2.79 a pound."
-    break;
-    case 'success_password':
-    console.log('la contraseña se cambio correctamente');
-
-    //console.log('contraseña cambiada');
-    // Expected output: "Mangoes and papayas are $2.79 a pound."
-    break;
-}
-</script>
-
-
-    
+    <style type="text/css">
+    .ocultar {display: none;}
+    .mostrar {display: block;   }
+</style>
   </head>
 
   <body>
@@ -73,33 +50,37 @@ switch (message) {
     <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
 
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> Rosa <span class="tx-info">Méxicano</span> <span class="tx-normal">]</span></div>
-        <div class="tx-center mg-b-60">___</div>
-    <form action="db/sesion/login2.php" method="POST" enctype="multipart/form-data"/>
+        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> Rosa <span class="tx-info">Mexicano</span> <span class="tx-normal">]</span></div>
+        <div class="tx-center mg-b-60">Recupera tu contraseña</div>
+<form id="recovery" action="../../db/consultas/change_pass.php" method="POST" enctype="multipart/form-data"/>
         <div class="form-group">
-          <input type="text" name="email" id="email" class="form-control"  placeholder="Ingresa tu correo">
+          <input type="password" name="pass1" id="pass1" class="form-control" placeholder="Ingresa tu contraseña">
         </div><!-- form-group -->
         <div class="form-group">
-          <input type="password" name="password" id="password" class="form-control" name placeholder="Ingresa tu contraseña">
-          <a href="recovery.php" class="tx-info tx-12 d-block mg-t-10">olvide mi contraseña</a>
-          <input type='checkbox' id='provaccess' class="form7">Soy proveedor
-
+          <input type="password" name="pass2" id="pass2" class="form-control" placeholder="Confirma tu contraseña" onkeyup="verificarPasswords()">
         </div><!-- form-group -->
-        <button type="button"  id="mainLogin" class="btn btn-info btn-block">Iniciar Sesion</button>
-        <span id = "alert" style="color:red"></span>
-        
+          <!-- Mensajes de Verificación -->
+          <input type="hidden" name="id" id="id" value="<?php echo $_GET['id'];?>">
+          <div id="error" class="alert alert-danger ocultar" role="alert">
+                                    Las Contraseñas no coinciden, vuelve a intentar !
+                                </div>
+                                <div id="ok" class="alert alert-success ocultar" role="alert">
+                                    Las Contraseñas coinciden !
+                                </div>
+                                <!-- Fin Mensajes de Verificación -->
+        <button type="submit" id="forward" name="forward" class="btn btn-info btn-block">Recuperar contraseña</button>
 
-</form>
-        <div class="mg-t-60 tx-center">No tienes cuenta? <a href="../instalador-php/" class="tx-info">Registrate</a></div>
+
+
+        <div class="mg-t-60 tx-center">ya tienes cuenta? <a href="index.html" class="tx-info">Inicia Sesion</a></div>
       </div><!-- login-wrapper -->
     </div><!-- d-flex -->
+    </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../../../js/sweetalert2/sweetalert2.all.min.js"></script>
-        <script src="../../lib/jquery/jquery.min.js"></script>
+    <script src="../../lib/jquery/jquery.min.js"></script>
     <script src="../../lib/jquery-ui/ui/widgets/datepicker.js"></script>
     <script src="../../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
- <script src="../../js/login.js"></script>
+    <script src="../../js/passVal.js"></script>
 
   </body>
 </html>
