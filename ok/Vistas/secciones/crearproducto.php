@@ -21,12 +21,6 @@ session_start();
 
 $user = $_SESSION["nomDB"];
 
-
-
-$dir = $_SERVER['DOCUMENT_ROOT'].'/rmshowroom2023';
-define("dir",  $dir);
-
-
 $nombre = $_SESSION['nombre'];
 $email = $_SESSION['email'];
 $img = $_SESSION['img'];
@@ -86,7 +80,6 @@ $prodFaltante = $numProuctos - $resultado;
       $alert = "Te quedan $prodFaltante  productos de tu plan ";
       $buttomDis = "";
       $class = "primary";
-
     }
     ?>
 <style type="text/css">

@@ -12,31 +12,14 @@ session_start();
  $email = $_SESSION['email'];
  $img = $_SESSION['img'];
 
- $sql = "SELECT * FROM planes WHERE idUsuario = '$ID'";
-
+ $sql = "SELECT * FROM usuarios WHERE status = '0'";
  if ($result = $conn->query($sql)) {
- 
-   if ($row = mysqli_fetch_array($result)) {
    
-     $color1 = $row['color1'];
-     $color2 = $row['color2'];
-     $color3 = $row['color3'];
-     $nomEmpresa = $row['nomDB'];
-     $logo = $row['logo'];
-     $admin = $row['admin'];
-     $crearProucto = $row['crearProucto'];
-     $entradaProducto = $row['entradaProducto'];
-     $proveedores = $row['proveedores'];
-     $reportes = $row['reportes'];
-     $crearProductos = $row['crearProductos'];
-     $crearCobros =  $row['crearCobros'];
-     $Mail = $row['Mail'];
-     $respaldo = $row['respaldo'];
-     $clientes = $row['clientes'];
-     $promociones = $row['promociones'];
-
-   }
  }
+
+ $evento = $_GET['evento'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,8 +58,13 @@ session_start();
     <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="../../lib/font" rel="stylesheet">
 
+     <!-- vendor css -->
+  <link rel="stylesheet" href="https://kit.fontawesome.com/5cc1067d3d.css" crossorigin="anonymous">
+  <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="../../css/bracket.css">
+    <link rel="stylesheet" href="../../../node_modules/sweetalert2/dist/sweetalert2.min.css">
   </head>
 
   <body>
@@ -98,8 +86,8 @@ session_start();
     </div><!-- br-sideleft -->
     <!-- ########## END: LEFT PANEL ########## -->
 
-    <!-- ########## START: HEAD PANEL ########## -->
-    <div class="br-header">
+ <!-- ########## START: HEAD PANEL ########## -->
+ <div class="br-header">
       <div class="br-header-left">
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
         <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
@@ -192,59 +180,58 @@ session_start();
        <p class="br-section-text">Elije las opciones de configuracion. </p>
 
        <div class="form-layout form-layout-1">
-        <form action="../../db/consultas/admin.php" method="POST" enctype="multipart/form-data"/>
-         <div class="row mg-b-25">
-           <div class="col-lg-4">
-           <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-  <label class="form-check-label" for="defaultCheck1">
-    Default checkbox
-  </label>
-</div>
-           </div><!-- col-4 -->
-           <div class="col-lg-4">
-             <div class="form-group">
-               <label class="form-control-label">Color de menu: <span class="tx-danger">*</span></label>
-               <input class="form-control" type="color" name="color2" value="<?PHP ECHO $color2; ?>" placeholder="Enter lastname">
-             </div>
-           </div><!-- col-4 -->
-           <div class="col-lg-4">
-             <div class="form-group">
-               <label class="form-control-label">Color de botones: <span class="tx-danger">*</span></label>
-               <input class="form-control" type="color" name="color3" value="<?PHP ECHO $color3; ?>" placeholder="Enter email address">
-             </div>
-           </div><!-- col-4 -->
-           <div class="col-lg-8">
-             <div class="form-group mg-b-10-force">
-               <label class="form-control-label">Nombre de la empresa: <span class="tx-danger">*</span></label>
-               <input class="form-control" type="text" name="Nombre" value="<?PHP ECHO $nomEmpresa; ?>" placeholder="Enter address">
-             </div>
-           </div><!-- col-8 -->
+     
+       <table class="table">
+  <thead class="thead-dark">
+  <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nombre de Empresa</th>
+      <th scope="col">Verificar Cuenta</th>
+      <th scope="col">Eliminar Registro</th>
 
-           <div class="col-lg-8">
-            <div class="form-group mg-b-10-force">
-              <img src="plugin/images/<?PHP ECHO $logo; ?>" width="100px" alt="">
-            </div>
-            </div>
-<input type="hidden" name="logoActual" value="<?PHP ECHO $logo; ?>">
-<input type="hidden" name="id" value="<?PHP ECHO $ID; ?>">
+    </tr>
+
+<?php
 
 
+if ($evento == 1){
+  echo  '<script language="javascript">alert("usuario verificado");</script>';;
+   }
 
-        <div class="col-lg-8">
-            <div class="form-group mg-b-10-force">
-              <label for="exampleFormControlFile1">Logo:  </label>
-              <input type="file" name="archivo" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-          </div><!-- col-8 -->
+if ($result = $conn->query($sql)) {
+  while ($row = $result->fetch_assoc()) {
+    $idUsuario = $row['idusuarios'];
+    $emailRow = $row['email'];
+    $nombreRow = $row['nombre'];
+    $nomEmpresaRow = $row['nomEmpresa'];
+
+      echo '
+    <tbody>
+      <tr> 
+                <th scope="row">'.$idUsuario.'</th>
+                <th>'.$nombreRow.'</th> 
+                <th>'.$emailRow.'</th> 
+                <th>'.$nomEmpresaRow.'</th> 
+                <th><a href="../../db/consultas/validarRegistro.php?id='.$idUsuario.'"> <img src="../../img/ok.png" alt="Actualizar" width="50"></a></th> 
+                <th><a href="#"> <img src="../../img/remove.png" alt="eliminar" width="50"></a></th> 
+            </tr>
+            </tbody>'
+            ;
+  }
+  $result->free();
+} 
+?>
+</thead>
+  <tbody>
+    
+  </tbody>
+</table>
 
 
-         </div><!-- row -->
 
-         <div class="form-layout-footer">
-           <button class="btn btn-info" name="subir" id="subir">Guardar</button>
-           <button class="btn btn-secondary">Cancelar</button>
-         </form>
+
          </div><!-- form-layout-footer -->
        </div><!-- form-layout -->
 
@@ -253,7 +240,8 @@ session_start();
 
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-
+    <script src="../../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../lib/jquery/jquery.min.js"></script>
     <script src="../../lib/jquery-ui/ui/widgets/datepicker.js"></script>
     <script src="../../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
