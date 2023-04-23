@@ -2,9 +2,13 @@
 
 include("../../../db/conn.php");
 
-
-
 session_start();
+
+ 
+ $ID = $_SESSION['id'];
+ $nombre = $_SESSION['nombre'];
+ $email = $_SESSION['email'];
+ $img = $_SESSION['img'];
 
  
  $ID = $_SESSION['id'];
@@ -50,18 +54,15 @@ session_start();
 
     <title>Rosa Mexicano | Dashboard</title>
 
-    <!-- vendor css -->
+    <!-- vendor css --> 
     <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="../../lib/font" rel="stylesheet">
+		<link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+		<link href="../../lib/highlightjs/styles/github.css" rel="stylesheet">
 
-     <!-- vendor css -->
-  <link rel="stylesheet" href="https://kit.fontawesome.com/5cc1067d3d.css" crossorigin="anonymous">
-  <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
 
-    <!-- Bracket CSS -->
-    <link rel="stylesheet" href="../../css/bracket.css">
-    <link rel="stylesheet" href="../../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+  <!-- Bracket CSS -->
+  <link rel="stylesheet" href="../../css/bracket.css">
+
   </head>
 
   <body>
@@ -178,30 +179,29 @@ session_start();
      <!-- inicia form layout -->
      <div class="br-pagebody">
      <div class="br-section-wrapper">
-       <h6 class="br-section-label">Activacion de usuarios</h6>
+       <h6 class="br-section-label">Administracion de roles</h6>
        
-      <p class="br-section-text"> Activa a los usuarios que ya Comprobaron el Pago</p>
+       <p class="br-section-text">Elije las opciones de configuracion. </p>
 
        <div class="form-layout form-layout-1">
 
-       <div class="container">
-  <div class="row align-items-start">
-  
+       
+   
+
     
+
 <?php
 
 
-$sql = "SELECT * FROM usuarios WHERE status ='0";
+
+
+$sql = "SELECT * FROM usuarios";
 if ($result = $conn->query($sql)) {
   
 }
 
 ?>
 
-
-  </div>
-  <BR>
-</div>
        <table class="table">
   <thead class="thead-dark">
   <tr>
@@ -210,8 +210,6 @@ if ($result = $conn->query($sql)) {
       <th scope="col">Email</th>
       <th scope="col">Nombre de Empresa</th>
       <th scope="col">Status</th>      
-      <th scope="col">Verificar Cuenta</th>
-      <th scope="col">Eliminar Registro</th>
       <th scope="col">Editar Permisos</th>
 
 
@@ -240,9 +238,7 @@ if ($result = $conn->query($sql)) {
                 <th>'.$emailRow.'</th> 
                 <th>'.$nomEmpresaRow.'</th> 
                 <th>'.$status.'</th> 
-                <th><a href="../../db/consultas/validarRegistro.php?id='.$idUsuario.'"> <img src="../../img/ok.png" alt="Actualizar" width="50"></a></th> 
-                <th><a href="#"> <img src="../../img/remove.png" alt="eliminar" width="50"></a></th> 
-                <th><a href="#"> <img src="../../img/remove.png" alt="Editar Permisos" width="50"></a></th> 
+                <th><a href="../../db/consultas/actualizarPermisos.php?idPermisos='.$idUsuario.'"> <img src="../../img/permisos.png" alt="permisos" width="50"></a></th> 
             </tr>
             </tbody>'
             ;
@@ -264,25 +260,82 @@ if ($result = $conn->query($sql)) {
 
 <!-- termina form layout -->
 
+<?php 
+$Usuario = 
+
+$sql = "SELECT * FROM planes where idUsuario = $Usuario";
+if ($result = $conn->query($sql)) {
+  
+}
+
+
+?>
+
+<!-- empieza modal Editar Permisos-->
+ <!-- BASIC MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Permisos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+               
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Termina Modal -->
+
+
+
 
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-    <script src="../../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+
     <script src="../../lib/jquery/jquery.min.js"></script>
     <script src="../../lib/jquery-ui/ui/widgets/datepicker.js"></script>
     <script src="../../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../../lib/moment/min/moment.min.js"></script>
-    <script src="../..//peity/jquery.peity.min.js"></script>
+    <script src="../../lib/peity/jquery.peity.min.js"></script>
     <script src="../../lib/highlightjs/highlight.pack.min.js"></script>
-    <script src="../../lib/jquery.flot/jquery.flot.js"></script>
-    <script src="../../lib/jquery.flot/jquery.flot.pie.js"></script>
-    <script src="../../lib/jquery.flot/jquery.flot.resize.js"></script>
-    <script src="../../lib/flot-spline/js/jquery.flot.spline.js"></script>
 
     <script src="../../js/bracket.js"></script>
-    <script src="../../js/chart.flot.js"></script>
 
+    <script>
+      $(function(){
+
+        // showing modal with effect
+        $('.modal-effect').on('click', function(e){
+          e.preventDefault();
+
+          var effect = $(this).attr('data-effect');
+          $('#modaldemo8').addClass(effect);
+          $('#modaldemo8').modal('show');
+        });
+
+        // hide modal with effect
+        $('#modaldemo8').on('hidden.bs.modal', function (e) {
+          $(this).removeClass (function (index, className) {
+              return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+          });
+        });
+      });
+    </script>
+    
   </body>
 </html>

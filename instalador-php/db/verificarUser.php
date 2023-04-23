@@ -1,11 +1,11 @@
 <?php 
- include('../../db/config.php');
+ include('../../db/conn.php');
  $email    = $_REQUEST['email'];
 
 
  $jsonData = array();
  $selectQuery   = ("SELECT * FROM usuarios WHERE email = '".$email."' ");
- $query         = mysqli_query($con, $selectQuery);
+ $query         = mysqli_query($conn, $selectQuery);
  $totalCliente  = mysqli_num_rows($query);
    if( $totalCliente <= 0 ){
      $jsonData['success'] = 0;
